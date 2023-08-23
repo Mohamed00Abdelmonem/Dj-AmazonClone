@@ -52,4 +52,4 @@ class Review(models.Model):
 
 
     def __str__(self) -> str:
-        return self.user - self.review   
+        return f"{self.user} - {self.review }"  
