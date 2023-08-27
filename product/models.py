@@ -16,6 +16,7 @@ class Product(models.Model):
     name = models.CharField(_("Name"),max_length=100)
     image = models.ImageField(_("Image"),upload_to= 'products')
     price = models.FloatField(_("Price"),)
+    rate = models.IntegerField(_("Rate"),) 
     flag = models.CharField(_("Flag"),max_length=10, choices=FLAG_TYPES)
     sku = models.CharField(_("Sku"),max_length=12)
     tags = TaggableManager()
