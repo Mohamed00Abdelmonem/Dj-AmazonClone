@@ -1,8 +1,11 @@
+from typing import Iterable, Optional
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+from django.utils.text import slugify
 from taggit.managers import TaggableManager
+
 
 # Create your models here.
 
@@ -24,10 +27,14 @@ class Product(models.Model):
     description = models.TextField(_("Description"),max_length=40000)
     quantity = models.IntegerField(_("Quantity"),)
     brand = models.ForeignKey('Brand', verbose_name=_("Brand"), related_name='product_brand', on_delete=models.SET_NULL, null=True)
+    slug = models.SlugField(null=True, blank=True)
 
     def __str__(self) -> str:
         return self.name  
-
+    
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Product, self).save(*args, **kwargs) 
 
 class ProductImages(models.Model):
     product = models.ForeignKey(Product, verbose_name=_("Product"),related_name='product_image', on_delete=models.CASCADE)
