@@ -1,4 +1,5 @@
 from typing import Any, Dict
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Product, Brand, Review
@@ -18,5 +19,20 @@ class ProductDetail(DetailView):
         context["related_products"] = Product.objects.filter(brand=self.get_object().brand)
         return context
     
+
+
 class BrandList(ListView):
-    model = Brand
+    model = Brand # context : object_list , model_list
+
+
+
+
+
+class BrandDetail(ListView):
+    model = Product
+    template_name = 'product/brand_detail.html'
+
+    def get_queryset(self):
+        brand = Brand.objects.get(slug=self.kwargs['slug'])
+        return super().get_queryset().filter(brand = brand)
+
