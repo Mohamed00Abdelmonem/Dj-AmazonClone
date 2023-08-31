@@ -1,7 +1,7 @@
 from typing import Any, Dict
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import Product, Review
+from .models import Product, Brand, Review
 # Create your views here.
 
 
@@ -17,3 +17,6 @@ class ProductDetail(DetailView):
         context["reviews"] = Review.objects.filter(product=self.get_object())
         context["related_products"] = Product.objects.filter(brand=self.get_object().brand)
         return context
+    
+class BrandList(ListView):
+    model = Brand
