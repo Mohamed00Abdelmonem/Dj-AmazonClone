@@ -42,4 +42,4 @@ def seed_product(n):
 
 
 
-seed_product(100)
+seed_product(1000)
