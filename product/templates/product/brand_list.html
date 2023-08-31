@@ -8,12 +8,7 @@
 
 
     {% block body %}
-     
-        <!--=====================================
-                    NAVBAR PART END
-        =======================================-->
-
-
+    
 
         <!--=====================================
                 CATEGORY SIDEBAR PART START
@@ -628,11 +623,12 @@
                                 <div class="brand-media">
                                     <img src="{{brand.image.url}}" alt="brand">
                                     <div class="brand-overlay">
-                                        <a href="brand-single.html"><i class="fas fa-link"></i></a>
+                                        <a href="{{brand.slug}}"><i class="fas fa-link"></i></a>
                                     </div>
                                 </div>
                                 <div class="brand-meta">
                                     <h4>{{brand}}</h4>
+                                    {% comment %} <h4>href="products/ {{brand.id}}" {{brand}}</h4> {% endcomment %}
                                     <p>(45 items)</p>
                                 </div>
                             </div>
