@@ -4,7 +4,7 @@ django.setup()
 
 from faker import Faker
 import random
-from product.models import Brand, Product, ProductImages
+from product.models import Brand, Product, ProductImages, Review
 
 
 def seed_brand(n):
@@ -52,4 +52,17 @@ def seed_product_images(n):
 
     print(f"Seed {n} images in product Successfully")
 
-seed_product_images(1000)
+
+def seed_reviews(n):
+    fake = Faker()
+    for _ in range(n):
+        Review.objects.create(
+            product = Product.objects.get(id=random.randint(1,1100)),
+            rate = random.randint(0,4) , 
+            review = fake.text(max_nb_chars=250), 
+        )
+
+    print(f"Seed {n} Reviews Successfully")
+
+
+seed_reviews(100)
