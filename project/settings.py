@@ -83,12 +83,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'project.wsgi.application'
 
 
-import mimetypes
-
-mimetypes.add_type("application/javascript", ".js", True) 
-DEBUG_TOOLBAR_CONFIG = {'INTERCEPT_REDIRECTS':False,}
-
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 

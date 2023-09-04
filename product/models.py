@@ -14,6 +14,8 @@ FLAG_TYPES = (
     ('feature', 'feature'),
 )
 
+# __________________________________________________________________________________
+
 class Product(models.Model):
     name = models.CharField(_("Name"),max_length=100)
     image = models.ImageField(_("Image"),upload_to= 'products')
@@ -34,6 +36,7 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Product, self).save(*args, **kwargs) 
+# __________________________________________________________________________________
 
 class ProductImages(models.Model):
     product = models.ForeignKey(Product, verbose_name=_("Product"),related_name='product_image', on_delete=models.CASCADE)
@@ -42,6 +45,8 @@ class ProductImages(models.Model):
 
     def __str__(self) -> str:
         return str(self.product)  
+
+# __________________________________________________________________________________
 
 
 class Brand(models.Model):
@@ -57,6 +62,9 @@ class Brand(models.Model):
         self.slug = slugify(self.name)
         super(Brand, self).save(*args, **kwargs)
 
+# __________________________________________________________________________________
+
+
 class Review(models.Model):
     user = models.ForeignKey(User, verbose_name=_("User"), on_delete=models.SET_NULL, null=True, related_name='review_auther')  
     product = models.ForeignKey(Product, verbose_name=_("Product"), related_name='review_product', on_delete=models.CASCADE)
@@ -67,3 +75,6 @@ class Review(models.Model):
 
     def __str__(self) -> str:
         return f"{self.user} - {self.review }"  
+
+
+# __________________________________________________________________________________
