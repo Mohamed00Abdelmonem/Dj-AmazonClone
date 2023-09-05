@@ -62,6 +62,11 @@ INTERNAL_IPS = [
     # ...
 ]
 
+import mimetypes
+mimetypes.add_type("application/javascript", ".js", True) 
+
+
+
 ROOT_URLCONF = 'project.urls'
 
 TEMPLATES = [
