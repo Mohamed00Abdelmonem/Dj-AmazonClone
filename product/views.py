@@ -65,6 +65,7 @@ class BrandDetail(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["brand"] = Brand.objects.get(slug=self.kwargs['slug'])
+        # دا كود ممكن من خلاله نستغنا عن داله الاسعلام اللي فوق دي 
         # context["object_list"] = Product.objects.filter(brand=context['brand'])
         return context
     

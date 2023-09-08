@@ -33,7 +33,7 @@
                   BRAND SINGLE PART START
         =======================================-->
         <div class="brand-single">
-            <a href="#"><img src="{{brand.image.url}}" alt="brand"></a>
+            <a href="#"><img src="{{brand.image.url}} "  alt="brand"></a>
             <a href="#"><h3>{{brand}}</h3></a>
             <ul>
                 <li class="fas fa-star active"></li>
@@ -92,7 +92,7 @@
                                     <i class="fas fa-heart"></i>
                                 </button>
                                 <a class="product-image" href="product-video.html">
-                                    <img src="{{item.image.url}}" alt="product">
+                                    <img src="{{item.image.url}}" style="height: 202px; width: 202px;" alt="product">
                                 </a>
                                 <div class="product-widget">
                                     <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
@@ -110,7 +110,7 @@
                                     <a href="product-video.html">(3)</a>
                                 </div>
                                 <h6 class="product-name">
-                                    <a href="product-video.html">{{item}}</a>
+                                    <a href="/product/{{item.slug}}">{{item}}</a>
                                 </h6>
                                 <h6 class="product-price">
                                     <span>${{item.price}}</span>
