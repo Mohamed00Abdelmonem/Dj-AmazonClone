@@ -3,9 +3,21 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Product, Brand, Review
+from django.db.models.aggregates import Count
+
 # Create your views here.
 
 # __________________________________________________________________________________
+
+def debug(request):
+    data = Product.objects.all()
+    return render(request, 'product/debug.html', {"data":data})
+
+
+
+
+# __________________________________________________________________________________
+
 
 class ProductList(ListView):
     model= Product
@@ -33,7 +45,7 @@ class ProductDetail(DetailView):
 
 class BrandList(ListView):
     model = Brand # context : object_list , model_list
-
+    queryset = Brand.objects.annotate(product_count=Count('product_brand'))
 
 
 # __________________________________________________________________________________
