@@ -36,12 +36,12 @@ class Product(models.Model):
     
 
     # instance method = each object , self = object
-    def avg_rate(self):
-        avg = self.review_product.aggregate(rate_avg=Avg('rate'))
-        if not avg['rate_avg']:
-            result = 0
-            return result
-        return avg['rate_avg']
+    # def avg_rate(self):
+    #     avg = self.review_product.aggregate(rate_avg=Avg('rate'))
+    #     if not avg['rate_avg']:
+    #         result = 0
+    #         return result
+    #     return avg['rate_avg']
 
 
     def save(self, *args, **kwargs):
