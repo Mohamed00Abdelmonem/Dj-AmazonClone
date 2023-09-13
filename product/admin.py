@@ -1,21 +1,9 @@
 from django.contrib import admin
-from .models import Product, ProductImages, Brand, Review
+from .models import Product, Brand, Review, ProductImages
 # Register your models here.
 
-class ProductImagesTabular(admin.TabularInline):
-    model = ProductImages
 
-
-
-class ProductAdim(admin.ModelAdmin):
-    list_display = ['name', 'flag', 'price', 'quantity', 'brand']
-    list_filter = ['flag', 'brand']
-    search_fields = ['name', 'subtitle', 'description'] 
-    inlines = [ProductImagesTabular]
-
-
-
-admin.site.register(Product, ProductAdim)
-admin.site.register(ProductImages)
+admin.site.register(Product)
 admin.site.register(Brand)
 admin.site.register(Review)
+admin.site.register(ProductImages)
