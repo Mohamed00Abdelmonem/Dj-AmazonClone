@@ -76,11 +76,15 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
 
 class BrandListSerializer(serializers.ModelSerializer):
+    product_count = serializers.SerializerMethodField()
     class Meta:
         model = Brand
         fields = '__all__'         
 
-
+    def get_product_count(self,brand:Brand):
+        brands = brand.product_brand.all().count()
+        return brands
+    
 
 #__________________________________________________________________________
 
@@ -88,7 +92,14 @@ class BrandListSerializer(serializers.ModelSerializer):
 
 
 class BrandDetailSerializer(serializers.ModelSerializer):
-    products = ProductListSerializer(source='product_brand', many=True)
+    product_count = serializers.SerializerMethodField() # عشان اجيبب كام منتج ف البراند دا
+    products = ProductListSerializer(source='product_brand', many=True) # دا عشان اجيب المنتجات الخاصه ب الماكه دي
+
     class Meta:
         model = Brand
         fields = '__all__'                 
+
+    def get_product_count(self,brand:Brand):
+        brands = brand.product_brand.all().count()
+        return brands
+        
