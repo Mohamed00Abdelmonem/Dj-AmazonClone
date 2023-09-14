@@ -6,8 +6,6 @@ from .models import Product, Brand, Review
 #__________________________________________________________________________
 
 
-
-
 class ProductListSerializer(serializers.ModelSerializer):
     # brand = BrandListSerializer() # this line code for return all detail for brand for this object or product 
     brand = serializers.StringRelatedField() # this line code for return str in model for this brand == name brand  
@@ -36,9 +34,6 @@ class ProductListSerializer(serializers.ModelSerializer):
     #     return product.price*1.5
     
 
-
-
-
 #__________________________________________________________________________
 
 
@@ -49,8 +44,6 @@ class ReviewsSerializer(serializers.ModelSerializer):
 
 
 #__________________________________________________________________________
-
-
 
 
 
@@ -78,12 +71,7 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         return reviews
 
 
-
-
 #__________________________________________________________________________
-
-
-
 
 
 
