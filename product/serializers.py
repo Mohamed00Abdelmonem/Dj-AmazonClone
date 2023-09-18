@@ -1,8 +1,9 @@
 from rest_framework import serializers
 from django.db.models.aggregates import Avg
 from .models import Product, Brand, Review
+from taggit.serializers import TagListSerializerField, TaggitSerializer
 
-
+                               
 #__________________________________________________________________________
 
 
@@ -11,6 +12,7 @@ class ProductListSerializer(serializers.ModelSerializer):
     brand = serializers.StringRelatedField() # this line code for return str in model for this brand == name brand  
     avg_rate = serializers.SerializerMethodField()
     review_count = serializers.SerializerMethodField()
+    tags = TagListSerializerField()
     # price_with_tax = serializers.SerializerMethodField()
     class Meta:
         model = Product
