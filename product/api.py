@@ -25,12 +25,13 @@ from rest_framework import generics
 
 
 # class based view generics
-class ProductListApi(generics.ListCreateAPIView):
+class ProductListApi(generics.ListCreateAPIView):   
     queryset = Product.objects.all()
     serializer_class = ProductListSerializer
-    filter_backends = [DjangoFilterBackend, filters.SearchFilter]
+    filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['flag', 'brand']
     search_fields = ['name', 'subtitle', 'description']
+    ordering_fields = ['price', 'quantity']
 
 
 class ProductDetailApi(generics.RetrieveUpdateDestroyAPIView):
