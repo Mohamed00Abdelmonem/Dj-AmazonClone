@@ -33,9 +33,12 @@ class CartDetail(models.Model):
     quantity = models.IntegerField()
     total = models.FloatField(null=True, blank=True)
 
+ 
     def __str__(self):
-        return self.cart
-    
+        if self.cart:
+            return f" {self.cart}"
+        else:
+            return f"Cart (No User)"
 
 
 
