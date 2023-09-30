@@ -24,3 +24,25 @@ Product
   - description
   - related items
   - quantity
+
+
+
+
+
+
+
+
+Orders
+ - code 
+ - oreder time
+ - delivary time
+ - address
+ - discount
+ -total product
+ - delivary free
+ - status [Recieved, Processed, Shipped, Delivered ]
+ Product
+  - name
+  - image
+  - price
+  - brand 
