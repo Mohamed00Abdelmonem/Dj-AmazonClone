@@ -19,7 +19,10 @@ class Cart(models.Model):
     status = models.CharField(max_length=10, choices=CART_STATUS)
 
     def __str__(self):
-        return self.user
+        if self.user:
+            return f"Cart for {self.user.username}"
+        else:
+            return f"Cart (No User)"
 
 
 
