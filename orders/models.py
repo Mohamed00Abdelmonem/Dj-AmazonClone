@@ -24,8 +24,11 @@ class Cart(models.Model):
         else:
             return f"Cart (No User)"
 
-
-
+    def cart_total(self):
+        total = 0 
+        for item in self.cart_detail.all():
+            total += item.total
+        return total
 
 class CartDetail(models.Model):
     cart = models.ForeignKey(Cart, related_name='cart_detail', on_delete=models.CASCADE)
@@ -36,7 +39,7 @@ class CartDetail(models.Model):
  
     def __str__(self):
         if self.cart:
-            return f" {self.cart}"
+            return f"cart_detail {self.cart}"
         else:
             return f"Cart (No User)"
 
