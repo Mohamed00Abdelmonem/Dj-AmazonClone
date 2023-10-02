@@ -61,20 +61,20 @@
                                     <div class="col-lg-12">
                                         <div class="order-track">
                                             <ul class="order-track-list">
-                                                <li class="order-track-item active">
-                                                    <i class="icofont-check"></i>
+                                                <li class="order-track-item {% if object.status == 'Recieved' or object.status == 'Processed' or object.status == 'Shipped' or object.status == 'Delivered' %} active {% endif %}">
+                                                    <i class="icofont-{% if object.status == 'Recieved' or object.status == 'Processed' or object.status == 'Shipped' or object.status == 'Delivered' %}check{% else %}close{% endif %}"></i>
                                                     <span>order recieved</span>
                                                 </li>
-                                                <li class="order-track-item">
-                                                    <i class="icofont-close"></i>
+                                                <li class="order-track-item {% if object.status == 'Processed' or object.status == 'Shipped' or object.status == 'Delivered' %} active {% endif %}">
+                                                    <i class="icofont-{% if  object.status == 'Processed' or object.status == 'Shipped' or object.status == 'Delivered' %}check{% else %}close{% endif %}"></i>
                                                     <span>order processed</span>
                                                 </li>
-                                                <li class="order-track-item">
-                                                    <i class="icofont-close"></i>
+                                                <li class="order-track-item {% if  object.status == 'Shipped' or object.status == 'Delivered' %} active {% endif %}">
+                                                    <i class="icofont-{% if  object.status == 'Shipped' or object.status == 'Delivered' %}check{% else %}close{% endif %}"></i>
                                                     <span>order shipped</span>
                                                 </li>
-                                                <li class="order-track-item">
-                                                    <i class="icofont-close"></i>
+                                                <li class="order-track-item {% if  object.status == 'Delivered' %} active {% endif %}">
+                                                    <i class="icofont-{% if  object.status == 'Delivered' %}check{% else %}close{% endif %}"></i>
                                                     <span>order delivered</span>
                                                 </li>
                                             </ul>
@@ -145,7 +145,7 @@
                                                         <td class="table-serial"><h6>{{forloop.counter}}</h6></td>
                                                         <td class="table-image"><img src="{{item.product.image.url}}" alt="product"></td>
                                                         <td class="table-name"><h6>{{item.product}}</h6></td>
-                                                        <td class="table-price"><h6>${{item.price}}<small>/kilo</small></h6></td>
+                                                        <td class="table-price"><h6>${{item.product.price}}<small>/kilo</small></h6></td>
                                                         <td class="table-brand"><h6>{{item.product.brand}}</h6></td>
                                                         <td class="table-quantity"><h6>{{item.quantity}}</h6></td>
                                                     </tr>
