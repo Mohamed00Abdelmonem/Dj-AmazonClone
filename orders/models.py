@@ -64,9 +64,8 @@ class Order(models.Model):
     total_after_coupon = models.FloatField(null=True, blank=True )
 
     def __str__(self):
-        return self.user
-
-
+            return f'{self.user}'
+       
 
 
 
@@ -79,7 +78,7 @@ class OrderDetail(models.Model):
     total = models.FloatField(null=True, blank=True)
 
     def __str__(self):
-            return self.order  
+            return f'{self.order}'
 
 
 
@@ -94,7 +93,7 @@ class Coupon(models.Model):
     end_date = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
-        return self.code
+        return f'{self.code}'
 
     def save(self, *args, **kwargs):
       week = datetime.timedelta(days=7)
