@@ -44,11 +44,7 @@ class CartDetailCreateAPI(generics.GenericAPIView):
 
 
 
-
-
-
     # This End Point For Delete Product
-
     def delete(self,request, *args, **kwargs):
         user = User.objects.get(username=self.kwargs['username'])
         cart_detail = CartDetail.objects.get(id=request.data['cart_detail_id'])
