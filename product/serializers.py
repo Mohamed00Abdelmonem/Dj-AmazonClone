@@ -104,4 +104,12 @@ class BrandDetailSerializer(serializers.ModelSerializer):
     def get_product_count(self,brand:Brand):
         brands = brand.product_brand.all().count()
         return brands
-        
+
+
+#__________________________________________________________________________
+ 
+
+class ProductCartSerializer(serializers.ModelSerializer):
+     class Meta:
+        model = Product
+        fields = ['name', 'image', 'price']
