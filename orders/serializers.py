@@ -4,8 +4,8 @@ from product.serializers import ProductListSerializer
 
 
 class CartDetailSerializer(serializers.ModelSerializer):
-    # product = ProductListSerializer()
-    product = serializers.StringRelatedField()
+    # product = ProductListSerializer() ------- = show all detail from product 
+    product = serializers.StringRelatedField() # ------ show product name only
     class Meta:
         model = CartDetail
         fields = '__all__'
