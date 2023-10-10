@@ -76,7 +76,7 @@ class OrderListAPI(generics.ListAPIView):
     #     return queryset
   
 
-  
+
 
   
 class OrderDetailAPI(generics.RetrieveAPIView):
@@ -87,3 +87,37 @@ class OrderDetailAPI(generics.RetrieveAPIView):
 
 
 
+class CreateOrderAPI(generics.GenericAPIView):
+    def get(self,*args, **kwargs):
+        user = User.objects.get(username=self.kwargs['username'])
+        cart = Cart.objects.get(user=user, status='InProgress')
+        cart_detail = CartDetail.objects.filter(cart=cart)
+
+        # cart --> order 
+        new_order = Order.objects.create(
+            user = user,
+            coupon = cart.coupon,
+            total_after_coupon = cart.total_after_coupon
+        )
+
+        # cart_detail --> order_detail --> loop
+        for object in cart_detail:
+            OrderDetail.objects.create(
+                order = new_order,
+                product = object.product,
+                quantity = object.quantity,
+                price = object.product.price,
+                total = round(int(object.quantity) * object.product.price,2)
+
+            )
+        cart.status = 'Completed'  
+        cart.save()
+        return Response({'message':'Order Created Successfully'})  
+
+
+
+
+
+
+class ApplayCouponAPI(generics.GenericAPIView):
+    pass
