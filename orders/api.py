@@ -77,3 +77,13 @@ class OrderListAPI(generics.ListAPIView):
   
 
   
+
+  
+class OrderDetailAPI(generics.RetrieveAPIView):
+    serializer_class = OrderListSerializer
+    queryset = Order.objects.all()
+
+    
+
+
+
