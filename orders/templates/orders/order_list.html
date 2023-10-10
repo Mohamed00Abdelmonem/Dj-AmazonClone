@@ -53,7 +53,7 @@
                     {% for object  in  object_list %}
                          <div class="orderlist">
                             <div class="orderlist-head">
-                                <h5>order#01</h5>
+                                <h5>order  {{forloop.counter}}</h5>
                                 <h5>order {{object.status}}</h5>
                             </div>
                             <div class="orderlist-body">
