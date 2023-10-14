@@ -366,12 +366,12 @@
                 
                         <li class="cart-item">
                             <div class="cart-media">
-                                <a href="#"><img src="{{item.product.image.url}}" alt="product"></a>
+                                <a href="/products/product/{{item.product.slug}}"><img src="{{item.product.image.url}}" alt="product"></a>
                                 <a href="/orders/{{item.id}}/remove-form-cart" class="cart-delete"><i class="far fa-trash-alt"></i></a>
                             </div>
                             <div class="cart-info-group">
                                 <div class="cart-info">
-                                    <h6><a href="product-single.html">{{item.product.name}}</a></h6>
+                                    <h6><a href="/products/product/{{item.product.slug}}">{{item.product.name}}</a></h6>
                                     <p>Unit Price - ${{item.price}}</p>
                                 </div>
                                 <div class="cart-action-group">
