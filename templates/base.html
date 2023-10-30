@@ -102,8 +102,8 @@
             <div class="container">
                 <div class="header-content">
                     <div class="header-media-group">
-                        <button class="header-user"><img src="images/user.png" alt="user"></button>
-                        <a href="index.html"><img src="images/logo.png" alt="logo"></a>
+                        <button class="header-user"><img src="{% static 'en/images/user.png' %}" alt="user"></button>
+                        <a href="index.html"><img src="{% static 'en/images/logo.png' %}" alt="logo"></a>
                         <button class="header-src"><i class="fas fa-search"></i></button>
                     </div>
 
@@ -111,7 +111,7 @@
                         <img src="{{company_data.logo.url}}" alt="logo">
                     </a>
                     <a href="login.html" class="header-widget" title="My Account">
-                        <img src="images/user.png" alt="user">
+                        <img src="{% static 'en/images/user.png' %}" alt="user">
                         <span>join</span>
                     </a>
 
@@ -810,8 +810,8 @@
                             <h3 class="footer-title">Download App</h3>
                             <p class="footer-desc">Lorem ipsum dolor sit amet tenetur dignissimos ipsum eligendi autem obcaecati minus ducimus totam reprehenderit exercitationem!</p>
                             <div class="footer-app">
-                                <a href="#"><img src="images/google-store.png" alt="google"></a>
-                                <a href="#"><img src="images/app-store.png" alt="app"></a>
+                                {% comment %} <a href="#"><img src="images/google-store.png" alt="google"></a>
+                                <a href="#"><img src="images/app-store.png" alt="app"></a> {% endcomment %}
                             </div>
                         </div>
                     </div>
@@ -819,12 +819,12 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="footer-bottom">
-                            <p class="footer-copytext">&copy;  All Copyrights Reserved by <a target="_blank" href="https://themeforest.net/user/mironcoder">Mironcoder</a></p>
+                            <p class="footer-copytext">&copy;  All Copyrights Reserved by <a target="_blank" href="https://themeforest.net/user/mioncoder">Mohamed Abdelmonem</a></p>
                             <div class="footer-card">
-                                <a href="#"><img src="images/payment/jpg/01.jpg" alt="payment"></a>
-                                <a href="#"><img src="images/payment/jpg/02.jpg" alt="payment"></a>
-                                <a href="#"><img src="images/payment/jpg/03.jpg" alt="payment"></a>
-                                <a href="#"><img src="images/payment/jpg/04.jpg" alt="payment"></a>
+                                <a href="#"><img src="{% static 'en/images/payment/jpg/01.jpg' %}" alt="payment"></a>
+                                <a href="#"><img src="{% static 'en/images/payment/jpg/02.jpg' %}" alt="payment"></a>
+                                <a href="#"><img src="{% static 'en/images/payment/jpg/03.jpg' %}" alt="payment"></a>
+                                <a href="#"><img src="{% static 'en/images/payment/jpg/04.jpg' %}" alt="payment"></a>
                             </div>
                         </div>
                     </div>
