@@ -196,7 +196,7 @@ LOCALE_PATHS = ['locale']
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379",
+        "LOCATION": "redis://myredis:6379/0",
     }
 }
 
@@ -206,8 +206,12 @@ CACHES = {
 
 
 # Celery configuration
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+
+CELERY_BROKER_URL = 'redis://myredis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://myredis:6379/0'
 
 # Optional: If you want to store task results in the database
 # CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite3'
