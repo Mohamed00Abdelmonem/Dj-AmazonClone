@@ -5,15 +5,17 @@ from django.views.generic import ListView, DetailView
 from .models import Product, Brand, Review
 from django.db.models.aggregates import Count
 from django.views.decorators.cache import cache_page
-
+from .tasks import send_emails
 # Create your views here.
 
 # __________________________________________________________________________________
 
 
-@cache_page(60 * 1)
+# @cache_page(60 * 1)
 def debug(request):
-    data = Product.objects.all()
+    data = Product.objects.get(id=100)
+    
+    send_emails.delay()    
     return render(request, 'product/debug.html', {"data":data})
 
 

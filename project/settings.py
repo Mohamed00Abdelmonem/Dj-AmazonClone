@@ -199,3 +199,18 @@ CACHES = {
         "LOCATION": "redis://127.0.0.1:6379",
     }
 }
+
+
+
+
+
+
+# Celery configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+
+# Optional: If you want to store task results in the database
+# CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite3'
+
+# Optional: Configure Celery to use Cairo timezone
+CELERY_TIMEZONE = 'Africa/Cairo'
