@@ -75,6 +75,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     "allauth.account.middleware.AccountMiddleware",
@@ -153,7 +154,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
@@ -172,6 +173,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = "media_root"
 
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -182,13 +184,27 @@ REST_AUTH = {
     'USE_JWT': True,
     'JWT_AUTH_COOKIE': 'jwt-auth',
 }
-
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-LOCALE_PATHS = ['locale']
 
 
 
+
+# Translation settings
+import os
+# Define the location of your translation files
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+LANGUAGES = [
+    ("en", ("English")),
+    ("ar", ("Arabic")),
+]
+
+
+
+
+# caching settings
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
@@ -197,6 +213,11 @@ CACHES = {
 }
 
 
+
+
+
+
+# celery settings
 
 # Celery configuration
 # CELERY_BROKER_URL = 'redis://localhost:6379/0'
