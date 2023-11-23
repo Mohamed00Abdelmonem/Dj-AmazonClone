@@ -185,11 +185,7 @@ REST_AUTH = {
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
-
-
 LOCALE_PATHS = ['locale']
-
- 
 
 
 
@@ -199,9 +195,6 @@ CACHES = {
         "LOCATION": "redis://myredis:6379/0",
     }
 }
-
-
-
 
 
 

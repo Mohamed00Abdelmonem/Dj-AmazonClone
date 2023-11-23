@@ -18,7 +18,7 @@ FLAG_TYPES = (
 # __________________________________________________________________________________
 
 class Product(models.Model):
-    name = models.CharField(_("Name"),max_length=100)
+    name = models.CharField(verbose_name=_('Name'),max_length=100)
     image = models.ImageField(_("Image"),upload_to= 'products')
     price = models.FloatField(_("Price"),)
     rate = models.IntegerField(_("Rate"),) 

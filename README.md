@@ -107,9 +107,9 @@ If you have any questions or issues, please don't hesitate to open an [issue](ht
 
 ## Project Demo
 
-![](screenshot00.png)
+![](image_readme/screenshot00.png)
 
 
 
 
-![](screenshot01.png)
+![](image_readme/screenshot01.png)
