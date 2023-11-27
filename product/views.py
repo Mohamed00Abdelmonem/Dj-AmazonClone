@@ -1,6 +1,6 @@
 from typing import Any, Dict
 from django.db.models.query import QuerySet
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import Product, Brand, Review
 from django.db.models.aggregates import Count
@@ -84,3 +84,16 @@ class BrandDetail(ListView):
 
 
 # __________________________________________________________________________________
+
+def add_review(request, slug):
+    product = Product.objects.get(slug=slug)
+    rate = request.POST['rate']
+    review = request.POST['review']
+
+    Review.objects.create(
+        product = product,
+        rate = rate,
+        review = review,
+        user = request.user
+    )
+    return redirect(f'/products/product/{product.slug}')
