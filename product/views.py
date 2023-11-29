@@ -6,6 +6,9 @@ from .models import Product, Brand, Review
 from django.db.models.aggregates import Count
 from django.views.decorators.cache import cache_page
 from .tasks import send_emails
+
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 # Create your views here.
 
 # __________________________________________________________________________________
@@ -96,4 +99,10 @@ def add_review(request, slug):
         review = review,
         user = request.user
     )
-    return redirect(f'/products/product/{product.slug}')
+
+    # new reviews
+    reviews = Review.objects.filter(product=product)
+    html = render_to_string('include/reviews_include.html', {'reviews':reviews})
+    return JsonResponse({'result':html})
+
+    # return redirect(f'/products/product/{product.slug}')
