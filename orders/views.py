@@ -7,6 +7,9 @@ from product.models import Product
 from settings.models import DeliveryFee
 from django.shortcuts import get_object_or_404
 import datetime
+
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 # Create your views here.
 
 
@@ -76,17 +79,24 @@ def checkout(request):
 
                 cart = Cart.objects.get(user=request.user, status='InProgress')
 
-                return render(request, 'orders/checkout.html',
-                              {'cart_detail':cart_detail,
-                               'sub_total':cart_total,
-                               'cart_total': total,
-                               'delivery_fee': total,
-                               'coupon_value':coupon_value,
+                # return render(request, 'orders/checkout.html',
+                #               {'cart_detail':cart_detail,
+                #                'sub_total':cart_total,
+                #                'cart_total': total,
+                #                'delivery_fee': total,
+                #                'coupon_value':coupon_value,
 
-                              }) 
+                #               }) 
                                   
 
-   
+                html = render_to_string('include/checkout_table.html', {'cart_detail':cart_detail,
+                                        'sub_total':cart_total,
+                                        'cart_total': total,
+                                        'delivery_fee': total,
+                                        'coupon_value':coupon_value,
+
+                                        })
+                return JsonResponse({'result':html})
 
 
     return render(request, 'orders/checkout.html', 
@@ -97,4 +107,5 @@ def checkout(request):
                     'coupon_value':0,
                    })    
 
-
+            
+   
