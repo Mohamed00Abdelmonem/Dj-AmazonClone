@@ -239,3 +239,10 @@ CELERY_RESULT_BACKEND = 'redis://myredis:6379/0'
 
 # Optional: Configure Celery to use Cairo timezone
 # CELERY_TIMEZONE = 'Africa/Cairo'
+
+
+
+AUTHENTICATION_BACKENDS = [
+    'accounts.backends.EmailOrUsernameModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]

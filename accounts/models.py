@@ -8,6 +8,10 @@ class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
     image = models.ImageField(upload_to='profile', null=True,blank=True)
     code = models.CharField(max_length=10, default=generate_code)
+    
+    def __str__(self) -> str:
+        return (f"{self.user}")
+
 
 
 @receiver(post_save, sender=User)
