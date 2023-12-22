@@ -1,0 +1,45 @@
+{% extends "auth_base.html" %}
+{% load django_bootstrap5 %}
+
+{% block body %}
+
+    <section class="user-form-part">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+                        <div class="user-form-logo">
+                            <a href="index.html"><img src="{{company_data.logo.url}}" alt="logo"></a>
+                        </div>
+                        <div class="user-form-card">
+                            <div class="user-form-title">
+                                <h2>Activate Your Account</h2>
+                            </div>
+                                                   <form class="user-form" method='post'>
+                            {% csrf_token %}
+                            {% bootstrap_form form %}
+
+                                <input type="hidden" name="next" value="{{ next }}">
+
+                               <div class="form-button">
+                                <button type="submit">Activate</button>
+                               </div>
+                            </form>
+                        </div>
+                        <div class="user-form-remind">
+                            <p>Go Back To<a href="login.html">login here</a></p>
+                        </div>
+                        <div class="user-form-footer">
+                            <p>Greeny | &COPY; Copyright by <a href="#">{{company_data.name}}</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+  
+{% endblock %}
