@@ -4,6 +4,11 @@ from .forms import SignupForm, ActivationForm
 from django.contrib.auth.models import User
 from .models import Profile
 
+from django.conf import settings    
+
+
+
+
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -20,7 +25,7 @@ def signup(request):
             send_mail(
                 "Activate Your Account",
                 f"Welcome {username} \n use this code {profile.code} to activate your account.",
-                "mmohamedabdelm@gmail.com",
+                settings.EMAIL_HOST_USER,
                 [email],
                 fail_silently=False,
             )
@@ -40,13 +45,13 @@ def activate(request, username):
             code = form.cleaned_data['code']
             if code == profile.code:
                 profile.code=''
-                profile.save()
+              
 
 
-                user = User.objects.get(user=profile.user)
+                user = User.objects.get(username=profile.user.username)
                 user.is_active = True
                 user.save() 
-
+                profile.save()
                 return redirect('/accounts/login')
     else: 
         form = ActivationForm()        
