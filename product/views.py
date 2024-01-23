@@ -4,7 +4,9 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import Product, Brand, Review
 from django.db.models.aggregates import Count
+from accounts.models import Profile
 from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 from .tasks import send_emails
 
 from django.http import JsonResponse
@@ -14,18 +16,19 @@ from django.template.loader import render_to_string
 # __________________________________________________________________________________
 
 
-# @cache_page(60 * 1)
+@cache_page(60 * 60 * 1)
 def debug(request):
-    data = Product.objects.get(id=100)
+    data = Product.objects.all()
+    user_data = Profile.objects.get(user=request.user)
     
-    send_emails.delay()    
-    return render(request, 'product/debug.html', {"data":data})
+    # send_emails.delay()      
+    return render(request, 'product/debug.html', {"data":data, 'user_data':user_data})
 
 
 
 
 # __________________________________________________________________________________
-
+@method_decorator(cache_page(60 * 60 * 5), name='dispatch')
 
 class ProductList(ListView):
     model= Product
@@ -50,8 +53,7 @@ class ProductDetail(DetailView):
 # 3 - line 19 another context name key = related_products , vlaue = that  Product.objects.filter(brand=self.get_object().brand)
 
 # __________________________________________________________________________________
-
-
+@method_decorator(cache_page(60 * 60 * 5), name='dispatch')
 class BrandList(ListView):
     model = Brand # context : object_list , model_list
     queryset = Brand.objects.annotate(product_count=Count('product_brand'))

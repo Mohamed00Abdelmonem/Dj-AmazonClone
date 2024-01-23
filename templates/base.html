@@ -135,7 +135,7 @@
             <div class="container">
                 <div class="header-content">
                     <div class="header-media-group">
-                        <button class="header-user"><img src="{% static 'en/images/user.png' %}" alt="user"></button>
+                        <button class="header-user"><img src="{{user_data.image.url}}" alt="user"></button>
                         <a href="index.html"><img src="{% static 'en/images/logo.png' %}" alt="logo"></a>
                         <button class="header-src"><i class="fas fa-search"></i></button>
                     </div>
@@ -143,8 +143,8 @@
                     <a href="/" class="header-logo">
                         <img src="{{company_data.logo.url}}" alt="logo">
                     </a>
-                    <a href="login.html" class="header-widget" title="My Account">
-                        <img src="{% static 'en/images/user.png' %}" alt="user">
+                    <a href="/" class="header-widget" title="My Account">
+                        <img src="{{user_data.image.url}}" alt="user">
                         <span>join</span>
                     </a>
 

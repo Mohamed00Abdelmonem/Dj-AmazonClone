@@ -53,7 +53,8 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'drf_yasg',
     "django_bootstrap5",
-    'silk',
+    # 'silk',
+    'django_redis',
 
 
     'product',
@@ -89,7 +90,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'silk.middleware.SilkyMiddleware',
+    # 'silk.middleware.SilkyMiddleware',
 
 ]
 
@@ -232,6 +233,16 @@ LANGUAGES = [
 #         "LOCATION": "redis://myredis:6379/0",
 #     }
 # }
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',  # Replace with your Redis server address
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
 
 
 

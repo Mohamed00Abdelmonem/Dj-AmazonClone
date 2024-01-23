@@ -49,7 +49,7 @@ def seed_product_images(n):
 '2.jpg', '20.jpg', '21.jpg', '28.jpg', '29.jpg', '3.jpg', '30.jpg', '31.jpg', '33.jpg', '34.jpg', '4.jpg', '47.jpg', '48.jpg', '49.jpg', '51.jpg', '52.jpg', '53.jpg', '54.jpg', '55.jpg', '56.jpg', '7.jpg', '23.jpeg', '24.jpeg', '25.jpeg', '26.jpeg', '35.jpeg', '36.jpeg', '37.jpeg', '38.jpeg', '39.jpeg', '40.jpeg', '41.jpeg', '42.jpeg', '43.jpeg', '44.jpeg', '45.jpeg', '18.webp', '19.webp', '32.webp', '5.webp', '6.webp']
     for _ in range(n):
         ProductImages.objects.create(
-            product = Product.objects.get(id=random.randint(1,100)),
+            product = Product.objects.get(id=random.randint(1,200)),
             image = f'product_images/{images[random.randint(0,55)]}'
         )
 
@@ -85,7 +85,7 @@ def create_users(n):
 # seed_brand(50)
 # seed_product(100)
 # seed_product_images(200)
-seed_reviews(200)
+# seed_reviews(100)
 # create_users(2)
 
         
