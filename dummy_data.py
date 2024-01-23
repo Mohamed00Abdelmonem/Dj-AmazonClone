@@ -5,7 +5,7 @@ django.setup()
 from faker import Faker
 import random
 from product.models import Brand, Product, ProductImages, Review
-
+from django.contrib.auth.models import User
 
 def seed_brand(n):
     fake = Faker()
@@ -19,24 +19,25 @@ def seed_brand(n):
     print(f"Seed {n} Brands Successfully")
 
 
+
+
 def seed_product(n):
-    fake = Faker()
-    images = ['13.png', '14.png', '17.png', '22.png', '27.png', '46.png', '50.png', '8.png', '9.png', '1.jpg', '10.jpg', '11.jpg', '12.jpg', '15.jpg', '16.jpg', 
-'2.jpg', '20.jpg', '21.jpg', '28.jpg', '29.jpg', '3.jpg', '30.jpg', '31.jpg', '33.jpg', '34.jpg', '4.jpg', '47.jpg', '48.jpg', '49.jpg', '51.jpg', '52.jpg', '53.jpg', '54.jpg', '55.jpg', '56.jpg', '7.jpg', '23.jpeg', '24.jpeg', '25.jpeg', '26.jpeg', '35.jpeg', '36.jpeg', '37.jpeg', '38.jpeg', '39.jpeg', '40.jpeg', '41.jpeg', '42.jpeg', '43.jpeg', '44.jpeg', '45.jpeg', '18.webp', '19.webp', '32.webp', '5.webp', '6.webp']
+    fake = Faker('ar_JO')  # 'ar_JO' is the locale code for Arabic (Jordan)
+    images = ['13.png', '14.png', '17.png', '22.png', '27.png', '46.png', '50.png', '8.png', '9.png', '1.jpg', '10.jpg', '11.jpg', '12.jpg', '15.jpg', '16.jpg',
+              '2.jpg', '20.jpg', '21.jpg', '28.jpg', '29.jpg', '3.jpg', '30.jpg', '31.jpg', '33.jpg', '34.jpg', '4.jpg', '47.jpg', '48.jpg', '49.jpg', '51.jpg', '52.jpg', '53.jpg', '54.jpg', '55.jpg', '56.jpg', '7.jpg', '23.jpeg', '24.jpeg', '25.jpeg', '26.jpeg', '35.jpeg', '36.jpeg', '37.jpeg', '38.jpeg', '39.jpeg', '40.jpeg', '41.jpeg', '42.jpeg', '43.jpeg', '44.jpeg', '45.jpeg', '18.webp', '19.webp', '32.webp', '5.webp', '6.webp']
     flags = ['new', 'sale', 'feature']
     for _ in range(n):
         Product.objects.create(
-            name = fake.name(),
-            image = f'products/{images[random.randint(0,55)]}',
-            flag = flags[random.randint(0, 2)],
-            price = round(random.uniform(20.99, 99.99),2),
-            sku = random.randint(1000,100000) ,
-            rate = random.randint(0,4) ,
-            subtitle = fake.text(max_nb_chars=250),
-            description = fake.text(max_nb_chars=2000),
-            quantity = random.randint(0,30),
-            brand = Brand.objects.get(id=random.randint(1,60)),
-
+            name=fake.word(),
+            image=f'products/{images[random.randint(0, 55)]}',
+            flag=flags[random.randint(0, 2)],
+            price=round(random.uniform(20.99, 99.99), 2),
+            sku=random.randint(1000, 100000),
+            rate=random.randint(0, 4),
+            subtitle=fake.text(max_nb_chars=250),
+            description=fake.text(max_nb_chars=2000),
+            quantity=random.randint(0, 30),
+            brand=Brand.objects.get(id=random.randint(0, 10)),
         )
 
     print(f"Seed {n} Products Successfully")
@@ -66,9 +67,20 @@ def seed_reviews(n):
 
     print(f"Seed {n} Reviews Successfully")
 
-seed_brand(10)
-seed_product(100)
-seed_product_images(200)
-seed_reviews(50)
+
+
+def create_users(num_users=5):
+    fake = Faker()
+    for _ in range(num_users):
+        User.objects.create_user(
+            username=fake.user_name(),
+            password=fake.password()
+        )
+
+# seed_brand(10)
+seed_product(2)
+# seed_product_images(200)
+# seed_reviews(50)
+# create_users(5)
 
         
