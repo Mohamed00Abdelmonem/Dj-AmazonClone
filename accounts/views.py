@@ -3,7 +3,8 @@ from django.core.mail import send_mail
 from .forms import SignupForm, ActivationForm
 from django.contrib.auth.models import User
 from .models import Profile
-
+from product.models import Product, Brand, Review
+from orders.models import Order
 from django.conf import settings    
 
 
@@ -60,6 +61,17 @@ def activate(request, username):
 
 
 
-
-def profile(request):
-    pass
+def dashboard(request):
+    users = User.objects.all().count()
+    products = Product.objects.all().count()
+    reviews = Review.objects.all().count()
+    brand = Brand.objects.all().count()
+    orders = Order.objects.all().count()
+    
+    return render(request, 'accounts/dashboard.html',{
+        'users':users,
+        'products':products,
+        'reviews':reviews,
+        'brand':brand,
+        'orders':orders,
+    })
