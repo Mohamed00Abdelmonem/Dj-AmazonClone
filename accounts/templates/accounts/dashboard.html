@@ -31,7 +31,7 @@
           data: {
             labels: ['Users', 'Producs', 'Brands', 'Orders', 'Reviews'],
             datasets: [{
-              label: '# of Votes',
+              label: 'Dashboard',
               data: ['{{users}}', '{{products}}', '{{brand}}', '{{orders}}', '{{reviews}}'],
               borderWidth: 1
             }]
@@ -54,10 +54,10 @@
         new Chart(ctx2, {
         type: 'pie',
         data: {
-            labels: ['Users', 'Producs', 'Brands', 'Orders', 'Reviews'],
+            labels: ['new_products', 'sale_products', 'feature_products'],
             datasets: [{
-            label: '# of Votes',
-            data: ['{{users}}', '{{products}}', "{{brand}}", "{{orders}}", "{{reviews}}"],
+            label: 'Producs',
+            data: ['{{new_products}}', '{{sale_products}}', "{{feature_products}}"],
             borderWidth: 1
             }]
         },

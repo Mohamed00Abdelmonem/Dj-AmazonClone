@@ -67,6 +67,10 @@ def dashboard(request):
     reviews = Review.objects.all().count()
     brand = Brand.objects.all().count()
     orders = Order.objects.all().count()
+
+    new_products = Product.objects.filter(flag='new').count()
+    sale_products = Product.objects.filter(flag='sale').count()
+    feature_products = Product.objects.filter(flag='feature').count()
     
     return render(request, 'accounts/dashboard.html',{
         'users':users,
@@ -74,4 +78,7 @@ def dashboard(request):
         'reviews':reviews,
         'brand':brand,
         'orders':orders,
+        'new_products':new_products,
+        'sale_products':sale_products,
+        'feature_products':feature_products,
     })
