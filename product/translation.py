@@ -4,6 +4,6 @@ from .models import Product
 
 # for Person model
 class ProductTranslationOptions(TranslationOptions):
-    fields = ('name', 'flag', 'price', 'subtitle', 'description', 'quantity', 'brand')
+    fields = ('name', 'flag', 'subtitle', 'description')
 
 translator.register(Product, ProductTranslationOptions)
