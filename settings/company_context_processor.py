@@ -11,7 +11,7 @@ def get_company_data(request):
 
 
 
-# @login_required
+@login_required
 def get_user_data(request):
-    user_profile = get_object_or_404(Profile, user=request.user)
+    user_profile = Profile.objects.get(user=request.user)
     return {'user_data': user_profile}
