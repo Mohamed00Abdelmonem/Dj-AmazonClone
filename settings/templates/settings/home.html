@@ -1916,7 +1916,7 @@
                                  <div class="testimonial-card">
                                 <i class="fas fa-quote-left"></i>
                                 <p>{{review.review}}</p>
-                                <h5>{{review.user}}</h5>
+                                <h5>{{ review.user.profile.user }}</h5>
                                 <ul>
                                     <li class="fas fa-star"></li>
                                     <li class="fas fa-star"></li>
@@ -1924,8 +1924,13 @@
                                     <li class="fas fa-star"></li>
                                     <li class="fas fa-star"></li>
                                 </ul>
-                                <img src="images/avatar/01.jpg" alt="testimonial">
-                            </div>
+                                    {% if  review.user.profile.image.url %}
+                                        <img src="{{ review.user.profile.image.url }}" alt="testimonial">
+                                    {% else %}
+                                        <!-- Use a default image path if the user profile image is not available -->
+                                        <img src="{% static 'en/images/avatar/01.png' %}" alt="not photo">
+                                    {% endif %}
+                                </div>
                             {% endfor %}
                            
                            
