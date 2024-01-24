@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Product, Brand, Review, ProductImages
+from modeltranslation.admin import TranslationAdmin
+
 # Register your models here.
 
 
@@ -8,7 +10,7 @@ class ProductImagesTaburlar(admin.TabularInline):
     model = ProductImages
 
 
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(TranslationAdmin):
     list_display = ['name', 'flag', 'price', 'quantity', 'brand']
     list_filter = ['flag', 'brand']
     search_fields = ['name']

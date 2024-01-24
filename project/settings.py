@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts',
+    'modeltranslation', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +53,8 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'drf_yasg',
     "django_bootstrap5",
-    'silk',
+    # 'silk',
+    'django_redis',
 
 
     'product',
@@ -88,7 +90,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'silk.middleware.SilkyMiddleware',
+    # 'silk.middleware.SilkyMiddleware',
 
 ]
 
@@ -119,7 +121,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'settings.company_context_processor.get_company_data',
-                'orders.cart_context_processor.get_or_create_cart'
+                'settings.company_context_processor.get_user_data',
+                'orders.cart_context_processor.get_or_create_cart',
             ],
         },
     },
@@ -131,12 +134,25 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "Amazon_Clone",
+        "USER": "postgres",
+        "PASSWORD": "01026120743",
+        "HOST": "127.0.0.1",
+        "PORT": "5432",
     }
 }
+
 
 
 # Password validation
@@ -219,6 +235,16 @@ LANGUAGES = [
 #     }
 # }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379/1',  # Replace with your Redis server address
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
+        }
+    }
+}
+
 
 
 
@@ -268,3 +294,8 @@ EMAIL_HOST_USER = 'mmohamedabdelm@gmail.com'  # Replace with your Gmail email ad
 EMAIL_HOST_PASSWORD = 'edkwbyqfithzanxw'  # Replace with your Gmail app password
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
+
+
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'

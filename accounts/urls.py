@@ -8,3 +8,5 @@ urlpatterns= [
     path('<str:username>/activate', activate),
     path('dashboard', dashboard),
 ]
+
+
