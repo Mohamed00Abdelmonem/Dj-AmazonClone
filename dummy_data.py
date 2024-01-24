@@ -85,7 +85,7 @@ def create_users(n):
 # seed_brand(50)
 # seed_product(100)
 # seed_product_images(200)
-# seed_reviews(100)
+seed_reviews(300)
 # create_users(2)
 
         
