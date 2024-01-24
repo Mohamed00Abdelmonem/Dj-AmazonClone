@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required
 from .forms import SignupForm, ActivationForm
 from django.contrib.auth.models import User
 from .models import Profile
@@ -58,6 +59,14 @@ def activate(request, username):
         form = ActivationForm()        
     return render(request,'registration/activate.html', {'form':form})        
 
+
+
+
+
+@login_required
+def profile(request):
+    user = User.objects.get(pk=request.user.pk)
+    return render(request, 'registration/profile.html', {'user': user})
 
 
 

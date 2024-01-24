@@ -1,3 +1,4 @@
+{% load static %}
 <h3 class="frame-title">Reviews ({{object.review_product.count}})</h3>
 <ul class="review-list">
 {% for review in reviews  %}
@@ -6,7 +7,11 @@
     <li class="review-item">
         <div class="review-media">
             <a class="review-avatar" href="#">
+            {% if review.user.profile.image.url %}
                 <img src="{{review.user.profile.image.url}}" alt="review">
+            {% else %}
+                <img src="{% static 'en/images/avatar/01.png' %}" alt ="user_image">
+            {% endif %}
             </a>
             <h5 class="review-meta">
                 <a href="#">{{review.user}}</a>
