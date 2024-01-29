@@ -82,10 +82,10 @@ def create_users(n):
         print(f"Seed {n} Reviews Successfully")
     
 
-# seed_brand(50)
-# seed_product(100)
-# seed_product_images(200)
-seed_reviews(300)
-# create_users(2)
+# seed_brand(2)
+# seed_product(10)
+# seed_product_images(20)
+# seed_reviews(30)
+# create_users(1)
 
         
