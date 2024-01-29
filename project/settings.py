@@ -121,7 +121,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'settings.company_context_processor.get_company_data',
-                'settings.company_context_processor.get_user_data',
+                # 'settings.company_context_processor.get_user_data',
                 'orders.cart_context_processor.get_or_create_cart',
             ],
         },
@@ -238,13 +238,12 @@ LANGUAGES = [
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',  # Replace with your Redis server address
+        'LOCATION': 'redis://127.0.0.1:6379/1',  # Adjust the URL as needed
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     }
 }
-
 
 
 

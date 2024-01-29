@@ -11,7 +11,7 @@ def get_company_data(request):
 
 
 
-@login_required
-def get_user_data(request):
-    user_profile = Profile.objects.get(user=request.user)
-    return {'user_data': user_profile}
+# @login_required
+# def get_user_data(request):
+#     user_profile = Profile.objects.get(user=request.user)
+#     return {'user_data': user_profile}
