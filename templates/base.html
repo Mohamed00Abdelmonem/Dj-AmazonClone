@@ -135,7 +135,14 @@
             <div class="container">
                 <div class="header-content">
                     <div class="header-media-group">
-                        <button class="header-user"><img src="{{user_data.image.url}}" alt="{{user_data.user.username}}"></button>
+                        <button class="header-user">
+                            {% if user.is_authenticated %}
+                                <img src="{{user_data.user.profile.image.url}}" alt="{{ user_data.user.name }}">
+                            {% else %}
+                                <img src="{% static 'en/images/avatar/01.png' %}" alt="{{ user_data.user.name }}">
+                            {% endif %}
+
+
                         <a href="/"><img src="{% static 'en/images/logo.png' %}" alt="logo"></a>
                         <button class="header-src"><i class="fas fa-search"></i></button>
                     </div>
@@ -143,11 +150,15 @@
                     <a href="/" class="header-logo">
                         <img src="{{company_data.logo.url}}" alt="logo">
                     </a>
-                         <a href="{% url 'accounts:profile_user' %}" class="header-widget" title="My Account">
-                         <img src="{{user_data.image.url}}" alt="{{user_data.user.name}}">
+                        <a href="{% url 'accounts:profile_user' %}" class="header-widget" title="My Account">
+                            {% if user.is_authenticated %}
+                                <img src="{{user_data.user.profile.image.url}}" alt="{{ user_data.user.name }}">
+                            {% else %}
+                                <img src="{% static 'en/images/avatar/01.png' %}" alt="{{ user_data.user.name }}">
+                            {% endif %}
+                            <span>Join</span>
+                        </a>
 
-                         <span>Join</span>
-                    </a>
 
                     <form class="header-form">
                         <input type="text" placeholder="Search anything...">
@@ -400,7 +411,7 @@
                 
                         <li class="cart-item">
                             <div class="cart-media">
-                                <a href="/products/product/{{item.product.slug}}"><img src="{{item.product.image.url}}" alt="product"></a>
+                                <a href="/products/product/{{item.product.slug}}"><img src="{% static '{{item.product.image.url}}' %}" alt="product"></a>
                                 <a href="/orders/{{item.id}}/remove-form-cart" class="cart-delete"><i class="far fa-trash-alt"></i></a>
                             </div>
                             <div class="cart-info-group">
@@ -442,7 +453,7 @@
         =======================================-->
         <aside class="nav-sidebar">
             <div class="nav-header">
-                <a href="#"><img src="images/logo.png" alt="logo"></a>
+                <a href="#"><img src="{% static 'images/logo.png' %}" alt="logo"></a>
                 <button class="nav-close"><i class="icofont-close"></i></button>
             </div>
             <div class="nav-content">
@@ -454,7 +465,7 @@
                 </div>
                 <!-- This commentable code show when user login or register -->
                 <!-- <div class="nav-profile">
-                    <a class="nav-user" href="#"><img src="images/user.png" alt="user"></a>
+                    <a class="nav-user" href="#"><img src="{% static 'images/user.png' %}" alt="user"></a>
                     <h4 class="nav-name"><a href="profile.html">Miron Mahmud</a></h4>
                 </div> -->
                 <div class="nav-select-group">
@@ -620,22 +631,22 @@
                                         <label class="view-label off">-10%</label>
                                     </div>
                                     <ul class="preview-slider slider-arrow"> 
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
                                     </ul>
                                     <ul class="thumb-slider">
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
-                                        <li><img src="images/product/01.jpg" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
+                                        <li><img src="{% static 'images/product/01.jpg' %}" alt="product"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -844,8 +855,8 @@
                             <h3 class="footer-title">Download App</h3>
                             <p class="footer-desc">Lorem ipsum dolor sit amet tenetur dignissimos ipsum eligendi autem obcaecati minus ducimus totam reprehenderit exercitationem!</p>
                             <div class="footer-app">
-                                {% comment %} <a href="#"><img src="images/google-store.png" alt="google"></a>
-                                <a href="#"><img src="images/app-store.png" alt="app"></a> {% endcomment %}
+                                {% comment %} <a href="#"><img src="{% static 'images/google-store.png' %}" alt="google"></a>
+                                <a href="#"><img src="{% static 'images/app-store.png' %}" alt="app"></a> {% endcomment %}
                             </div>
                         </div>
                     </div>

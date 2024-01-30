@@ -448,19 +448,20 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="testimonial-slider slider-arrow">
-                            {% for review in reviews %}
-                                 <div class="testimonial-card">
-                                <i class="fas fa-quote-left"></i>
-                                <p>{{review.review}}</p>
-                                <h5>{{ review.user.profile.user }}</h5>
-                                <ul>
-                                    <li class="fas fa-star"></li>
-                                    <li class="fas fa-star"></li>
-                                    <li class="fas fa-star"></li>
-                                    <li class="fas fa-star"></li>
-                                    <li class="fas fa-star"></li>
-                                </ul>
-                                    {% if  review.user.profile.image.url %}
+                           {% for review in reviews %}
+                                <div class="testimonial-card">
+                                    <i class="fas fa-quote-left"></i>
+                                    <p>{{ review.review }}</p>
+                                    <h5>{{ review.user.profile.user }}</h5>
+                                    <ul>
+                                        <li class="fas fa-{% if review.rate > 0 %}star{% else %}-empty {% endif%}"></li>
+                                        <li class="fas fa-{% if review.rate > 1 %}star{% else %}-empty {% endif%}"></li>
+                                        <li class="fas fa-{% if review.rate > 2 %}star{% else %}-empty {% endif%}"></li>
+                                        <li class="fas fa-{% if review.rate > 3 %}star{% else %}-empty {% endif%}"></li>
+                                        <li class="fas fa-{% if review.rate > 4 %}star{% else %}-empty {% endif%}"></li>
+                                        <li class="fas fa-{% if review.rate > 5 %}star{% else %}-empty {% endif%}"></li>
+                                    </ul>
+                                    {% if review.user.profile.image.url %}
                                         <img src="{{ review.user.profile.image.url }}" alt="testimonial">
                                     {% else %}
                                         <!-- Use a default image path if the user profile image is not available -->
@@ -468,6 +469,7 @@
                                     {% endif %}
                                 </div>
                             {% endfor %}
+
                            
                            
                         </div>

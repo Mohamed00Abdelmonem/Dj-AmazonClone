@@ -1,6 +1,6 @@
 
 from modeltranslation.translator import translator, TranslationOptions
-from .models import Product, Review
+from .models import Product
 
 # for Person model
 class ProductTranslationOptions(TranslationOptions):
@@ -8,8 +8,3 @@ class ProductTranslationOptions(TranslationOptions):
 
 translator.register(Product, ProductTranslationOptions)
 
-
-class ReviewTranslationOptions(TranslationOptions):
-    fields = ('review',)
-
-translator.register(Review, ReviewTranslationOptions)
