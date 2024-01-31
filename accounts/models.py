@@ -40,9 +40,6 @@ class Address(models.Model):
 
 
 
-
-
-
 PHONE_TYPE = (
     ('Primary','Primary' ),
     ('Secondry', 'Secondry'),

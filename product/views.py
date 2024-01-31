@@ -28,11 +28,15 @@ def debug(request):
 
 
 # __________________________________________________________________________________
-@method_decorator(cache_page(60 * 60 * 5), name='dispatch')
+@method_decorator(cache_page(60 * 2), name='dispatch')
 
 class ProductList(ListView):
     model= Product
     paginate_by =30
+
+    def get_queryset(self) -> QuerySet[Any]:
+        # Order products by ID in descending order
+        return Product.objects.all().order_by('-id')
 
 # __________________________________________________________________________________
 

@@ -15,6 +15,7 @@ class ProductAdmin(TranslationAdmin):
     list_filter = ['flag', 'brand']
     search_fields = ['name']
     inlines = [ProductImagesTaburlar]
+    ordering = ('-id',) 
 
 
 

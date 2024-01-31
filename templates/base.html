@@ -116,7 +116,8 @@
                         <ul class="header-top-list">
                             <li><a href="offer.html">offers</a></li>
                             <li><a href="faq.html">need help</a></li>
-                            <li><a href="contact.html">contact us</a></li>
+                            <li><a href="contact-us">contact us</a></li>
+                            <li><a href="accounts/logout/">logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -151,7 +152,7 @@
                         <img src="{{company_data.logo.url}}" alt="logo">
                     </a>
                         <a href="{% url 'accounts:profile_user' %}" class="header-widget" title="My Account">
-                            {% if user.is_authenticated %}
+                            {% if user.is_authenticated  %}
                                 <img src="{{user_data.user.profile.image.url}}" alt="{{ user_data.user.name }}">
                             {% else %}
                                 <img src="{% static 'en/images/avatar/01.png' %}" alt="{{ user_data.user.name }}">
