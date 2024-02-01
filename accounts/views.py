@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
-from .forms import SignupForm, ActivationForm
+from .forms import SignupForm, ActivationForm, UpdateUserForm
 from django.contrib.auth.models import User
 from .models import Profile
 from product.models import Product, Brand, Review
 from orders.models import Order
 from django.conf import settings    
-
+from django.views.generic import UpdateView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
@@ -91,3 +93,15 @@ def dashboard(request):
         'sale_products':sale_products,
         'feature_products':feature_products,
     })
+
+
+
+
+class EditProfile(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UpdateUserForm
+    template_name = 'registration/profile.html'  # Replace with your actual template name
+    success_url = reverse_lazy('profile')  # Replace 'profile' with the name of your profile URL
+
+    def get_object(self, queryset=None):
+        return self.request.user
