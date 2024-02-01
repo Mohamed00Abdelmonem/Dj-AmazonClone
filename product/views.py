@@ -28,7 +28,7 @@ def debug(request):
 
 
 # __________________________________________________________________________________
-@method_decorator(cache_page(60 * 2), name='dispatch')
+# @method_decorator(cache_page(60 * 60 * 5), name='dispatch')
 
 class ProductList(ListView):
     model= Product

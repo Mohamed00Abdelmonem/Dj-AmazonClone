@@ -51,7 +51,7 @@ def seed_product_images(n):
 ]
     for _ in range(n):
         ProductImages.objects.create(
-            product = Product.objects.get(id=random.randint(1,300)),
+            product = Product.objects.get(id=random.randint(316,415)),
             image = f'product_images/{images[random.randint(50,76)]}'
         )
 
@@ -65,7 +65,7 @@ def seed_reviews(n):
     for _ in range(n):
         Review.objects.create(
             user=fake.random_element(users),
-            product = Product.objects.get(id=random.randint(1,200)),
+            product = Product.objects.get(id=random.randint(316,415)),
             rate = random.randint(0,4) , 
             review = fake.text(max_nb_chars=250), 
         )
@@ -87,7 +87,7 @@ def create_users(n):
 # seed_brand(2)
 # seed_product(100)
 seed_product_images(200)
-# seed_reviews(30)
+seed_reviews(300)
 # create_users(1)
 
         

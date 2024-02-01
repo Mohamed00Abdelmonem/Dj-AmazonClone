@@ -11,7 +11,7 @@ class ProductImagesTaburlar(admin.TabularInline):
 
 
 class ProductAdmin(TranslationAdmin):
-    list_display = ['name', 'flag', 'price', 'quantity', 'brand']
+    list_display = ['id', 'name', 'flag', 'price', 'quantity', 'brand']
     list_filter = ['flag', 'brand']
     search_fields = ['name']
     inlines = [ProductImagesTaburlar]
