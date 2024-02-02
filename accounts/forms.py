@@ -27,5 +27,5 @@ class ActivationForm(forms.Form):
 
 class UpdateUserForm(forms.ModelForm):
     class Meta:
-        model = Profile
-        fields = '__all__'
+        model = User
+        fields = ['username', 'email']

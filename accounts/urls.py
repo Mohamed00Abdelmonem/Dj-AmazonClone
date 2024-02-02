@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import signup, activate, dashboard, profile, EditProfile
+from .views import signup, activate, dashboard, profile
 
 app_name = 'accounts'
 
@@ -8,7 +8,7 @@ urlpatterns= [
     path('<str:username>/activate', activate),
     path('profile', profile, name='profile_user'),
     path('dashboard', dashboard),
-    path('edit-profile/', EditProfile.as_view(), name='edit_profile'),
+    # path('edituser', update_user, name='edit_profile'),
 
 ]
 

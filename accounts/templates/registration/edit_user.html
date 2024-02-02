@@ -1,0 +1,18 @@
+{% comment %} {% extends "auth_base.html" %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block body %}
+
+<h1>edit user data</h1>
+<form method="post">
+
+    {% csrf_token %}
+
+    {{form}}
+    <input type="submit" value="Update now">
+
+
+
+</form>
+
+{% endblock body %} {% endcomment %}

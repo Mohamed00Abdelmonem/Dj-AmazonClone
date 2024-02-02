@@ -67,12 +67,26 @@ def activate(request, username):
 
 @login_required
 def profile(request):
+    # return user.is_authontacated for return him data
     user = User.objects.get(pk=request.user.pk)
-    return render(request, 'registration/profile.html', {'user': user})
+
+
+    # updata data for user 
+    data = request.user
+    if request.method == 'POST':
+        form = UpdateUserForm(request.POST, instance=data)
+        if form.is_valid():
+            form.save()
+            return redirect('/accounts/profile')
+    else:
+        form = UpdateUserForm(instance=data)    
+
+    return render(request, 'registration/profile.html', {'user': user, 'form':form})
 
 
 
 def dashboard(request):
+
     users = User.objects.all().count()
     products = Product.objects.all().count()
     reviews = Review.objects.all().count()
@@ -92,16 +106,33 @@ def dashboard(request):
         'new_products':new_products,
         'sale_products':sale_products,
         'feature_products':feature_products,
+       
     })
 
 
 
 
-class EditProfile(LoginRequiredMixin, UpdateView):
-    model = User
-    form_class = UpdateUserForm
-    template_name = 'registration/profile.html'  # Replace with your actual template name
-    success_url = reverse_lazy('profile')  # Replace 'profile' with the name of your profile URL
+# def update_user(request):
+#     data = request.user
+#     if request.method == 'POST':
+#         form = UpdateUserForm(request.POST, instance=data)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('/accounts/profile')
 
-    def get_object(self, queryset=None):
-        return self.request.user
+
+#     else:
+#         form = UpdateUserForm(instance=data)    
+
+#     return render(request, 'registration/profile.html', {'form': form})    
+
+
+
+# class EditProfile(LoginRequiredMixin, UpdateView):
+#     model = User
+#     form_class = UpdateUserForm
+#     template_name = 'registration/profile.html'  # Replace with your actual template name
+#     success_url = reverse_lazy('profile')  # Replace 'profile' with the name of your profile URL
+
+#     def get_object(self, queryset=None):
+#         return self.request.user
