@@ -412,7 +412,7 @@
                 
                         <li class="cart-item">
                             <div class="cart-media">
-                                <a href="/products/product/{{item.product.slug}}"><img src="{% static '{{item.product.image.url}}' %}" alt="product"></a>
+                                <a href="/products/product/{{item.product.slug}}"><img src='{{item.product.image.url}}' alt="product"></a>
                                 <a href="/orders/{{item.id}}/remove-form-cart" class="cart-delete"><i class="far fa-trash-alt"></i></a>
                             </div>
                             <div class="cart-info-group">
