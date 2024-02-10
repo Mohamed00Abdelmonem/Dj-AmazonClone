@@ -141,11 +141,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 #     }
 # }
 
-
+    
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "Amazon_Clone",
+        "NAME": "New_Amazon_Clone",
         "USER": "postgres",
         "PASSWORD": "01026120743",
         "HOST": "127.0.0.1",

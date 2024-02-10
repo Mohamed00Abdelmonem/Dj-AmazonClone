@@ -57,7 +57,7 @@ class ProductDetail(DetailView):
 # 3 - line 19 another context name key = related_products , vlaue = that  Product.objects.filter(brand=self.get_object().brand)
 
 # __________________________________________________________________________________
-@method_decorator(cache_page(60 * 60 * 5), name='dispatch')
+# @method_decorator(cache_page(60 * 60 * 5), name='dispatch')
 class BrandList(ListView):
     model = Brand # context : object_list , model_list
     queryset = Brand.objects.annotate(product_count=Count('product_brand'))
