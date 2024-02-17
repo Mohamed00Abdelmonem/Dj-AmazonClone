@@ -21,7 +21,7 @@ def debug(request):
     data = Product.objects.all()
     user_data = Profile.objects.get(user=request.user)
     
-    # send_emails.delay()      
+    send_emails.delay()      
     return render(request, 'product/debug.html', {"data":data, 'user_data':user_data})
 
 
