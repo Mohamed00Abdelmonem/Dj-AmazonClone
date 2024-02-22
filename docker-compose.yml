@@ -6,19 +6,33 @@ services:
     ports:
       - "8000:8000"
     command: python manage.py runserver 0.0.0.0:8000
-    container_name: DjBackend  
+    container_name: DjBackend
     depends_on:
       - myredis
+      - db
+    environment:
+      POSTGRES_DB: "New_Amazon_Clone"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: 01026120743
 
   myredis:
-    image: redis:7.0.14-alpine3.18  
-    container_name: RedisServer 
+    image: redis:7.0.14-alpine3.18
+    container_name: RedisServer
 
-  
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: New_Amazon_Clone
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "01026120743"
+    ports:
+      - "5432:5432"
+    container_name: PostgreSQLServer
+
   celery:
     build: .
     command: celery -A project worker --loglevel=info
     depends_on:
       - myredis
       - backend
-  
+      - db
