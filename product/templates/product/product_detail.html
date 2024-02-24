@@ -61,12 +61,14 @@
                                 <p>BRAND:<a href="#">{{object.brand}}</a></p>
                             </div>
                             <div class="details-rating">
-                                <i class="active icofont-star"></i>
-                                <i class="active icofont-star"></i>
-                                <i class="active icofont-star"></i>
-                                <i class="active icofont-star"></i>
-                                <i class="icofont-star"></i>
-                                <a href="#">(3 reviews)</a>
+                               <!-- دا كدا بيظهر متوسط التقيمات علي كل منتج  -->
+                                                    <i class="icofont-star {% if object.avg_rate > 0 %}active {% endif %}"></i>
+                                                    <i class="icofont-star {% if object.avg_rate > 1 %}active {% endif %}"></i>
+                                                    <i class="icofont-star {% if object.avg_rate > 2 %}active {% endif %}"></i>
+                                                    <i class="icofont-star {% if object.avg_rate > 3 %}active {% endif %}"></i>
+                                                    <i class="icofont-star {% if object.avg_rate > 4 %}active {% endif %}"></i>
+                   
+                                <a href="#">({{object.review_product.count}})</a>
                             </div>
                             <h3 class="details-price">
                                 {% comment %} <del>$38.00</del> {% endcomment %}
@@ -218,7 +220,7 @@
                                             <a href="product-video.html">(3)</a>
                                         </div>
                                         <h6 class="product-name">
-                                            <a href="product-video.html">{{item}}</a>
+                                            <a href="/products/product/{{item.slug}}">{{item}}</a>
                                         </h6>
                                         <h6 class="product-price">
                                             {% comment %} <del>$34</del> {% endcomment %}

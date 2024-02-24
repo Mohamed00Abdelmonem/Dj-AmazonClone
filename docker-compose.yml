@@ -9,25 +9,25 @@ services:
     container_name: DjBackend
     depends_on:
       - myredis
-      - db
-    environment:
-      POSTGRES_DB: "New_Amazon_Clone"
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: 01026120743
+    #   - db
+    # environment:
+    #   POSTGRES_DB: "New_Amazon_Clone"
+    #   POSTGRES_USER: "postgres"
+    #   POSTGRES_PASSWORD: 01026120743
 
   myredis:
     image: redis:7.0.14-alpine3.18
     container_name: RedisServer
 
-  db:
-    image: postgres:latest
-    environment:
-      POSTGRES_DB: New_Amazon_Clone
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: "01026120743"
-    ports:
-      - "5432:5432"
-    container_name: PostgreSQLServer
+  # db:
+  #   image: postgres:latest
+  #   environment:
+  #     POSTGRES_DB: New_Amazon_Clone
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: "01026120743"
+  #   ports:
+  #     - "5432:5432"
+  #   container_name: PostgreSQLServer
 
   celery:
     build: .
@@ -35,4 +35,4 @@ services:
     depends_on:
       - myredis
       - backend
-      - db
+      # - db

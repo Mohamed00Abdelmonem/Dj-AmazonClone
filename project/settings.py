@@ -148,11 +148,10 @@ DATABASES = {
         "NAME": "New_Amazon_Clone",
         "USER": "postgres",
         "PASSWORD": "01026120743",
-        "HOST": "db",  # Use the service name from docker-compose.yml
+        "HOST": "127.0.0.1",
         "PORT": "5432",
     }
 }
-
 
 
 
@@ -259,6 +258,13 @@ CACHES = {
 CELERY_BROKER_URL = 'redis://myredis:6379/0'
 CELERY_RESULT_BACKEND = 'redis://myredis:6379/0'
 
+
+
+# CELERY_BROKER_URL = 'redis://myredis:6379/0'
+# CELERY_RESULT_BACKEND = 'redis://myredis:6379/0'
+
+# Optional: If you want to store task results in the database
+# CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite3'
 
 # Optional: Configure Celery to use Cairo timezone
 # CELERY_TIMEZONE = 'Africa/Cairo'
