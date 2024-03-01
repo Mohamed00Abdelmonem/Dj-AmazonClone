@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 from taggit.managers import TaggableManager
 from django.db.models.aggregates import Avg
+from django.utils.html import format_html
 
 
 # Create your models here.
@@ -28,11 +29,25 @@ class Product(models.Model):
     subtitle = models.CharField(_("Subtitle"),max_length=300)
     description = models.TextField(_("Description"),max_length=40000)
     quantity = models.IntegerField(_("Quantity"),)
+    max_quantity = models.IntegerField(_("Max Quantity"), default=100)  # Change '100' to your desired default value
+
     brand = models.ForeignKey('Brand', verbose_name=_("Brand"), related_name='product_brand', on_delete=models.SET_NULL, null=True)
     slug = models.SlugField(null=True, blank=True)
 
     def __str__(self) -> str:
-        return self.name  
+        return self.name
+
+    def quantity_progress_bar(self):
+        if self.quantity is not None:
+            percentage = round((self.quantity / self.max_quantity * 100), 2)
+        else:
+            percentage = 0
+
+        return format_html(
+            '<progress value="{}" max="100"></progress><span style="font-weight:bold">{:.2f}%</span>',
+            percentage,
+            percentage
+        )
     
 
     # instance method = each object , self = object
