@@ -16,16 +16,46 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
+
+
+# Update the SECRET_KEY with a strong, unique key
+SECRET_KEY = 'django-insecure-fg(+bu4ctmqy6n5heqjmaqg$lpqewk+6o+v+@vv7s=2jxa1gk&'
+
+# Set DEBUG to False in a production environment
+DEBUG = False
+
+# Update ALLOWED_HOSTS with your actual domain name
+ALLOWED_HOSTS = ['web-production-5181.up.railway.app']
+
+# Configure a healthcheck path for deployment verification
+HEALTHCHECK_PATH = '/healthcheck/'  # Replace with an appropriate path
+
+# Adjust the number of replicas for better redundancy and availability
+REPLICAS = 2  # Adjust as needed
+
+# Review and update the build and start commands as necessary
+# The following is a sample Gunicorn start command
+START_COMMAND = 'gunicorn project.wsgi:application --bind 0.0.0.0:$PORT'
+
+# Choose an appropriate region for deployment
+# For example, 'US West (Oregon, USA)'
+REGION = 'us-west'
+
+# Max restart retries in case of failure
+MAX_RESTART_RETRIES = 10
+
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fg(+bu4ctmqy6n5heqjmaqg$lpqewk+6o+v+@vv7s=2jxa1gk&'
+# SECRET_KEY = 'django-insecure-fg(+bu4ctmqy6n5heqjmaqg$lpqewk+6o+v+@vv7s=2jxa1gk&'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -63,7 +93,6 @@ INSTALLED_APPS = [
 
 ]
 
-ALLOWED_HOSTS = ['web-production-453f.up.railway.app']
 
 
 
