@@ -57,8 +57,7 @@ INSTALLED_APPS = [
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['web-production-453f.up.railway.app']
-
+ALLOWED_HOSTS = ['web-production-5181.up.railway.app']
 
 
 
