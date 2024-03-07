@@ -38,6 +38,10 @@ class ProductAdmin(TranslationAdmin):
             floatformat(percentage, 2) + '%'
         )
 
+
+
+
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Brand)
 admin.site.register(Review)

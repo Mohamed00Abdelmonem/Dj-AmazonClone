@@ -63,6 +63,8 @@ INSTALLED_APPS = [
 
 ]
 
+ALLOWED_HOSTS = ['web-production-453f.up.railway.app']
+
 
 
 REST_FRAMEWORK = {
