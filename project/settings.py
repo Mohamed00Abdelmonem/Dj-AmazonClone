@@ -16,6 +16,18 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'django-insecure-fg(+bu4ctmqy6n5heqjmaqg$lpqewk+6o+v+@vv7s=2jxa1gk&'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -52,12 +64,6 @@ INSTALLED_APPS = [
 ]
 
 
-
-
-
-DEBUG = True
-
-ALLOWED_HOSTS = ['web-production-5181.up.railway.app']
 
 
 
