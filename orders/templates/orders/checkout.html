@@ -261,165 +261,49 @@
                                 <label for="checkout-check">By making this purchase you agree to our <a href="#">Terms and Conditions</a>.</label>
                             </div>
                             <div class="checkout-proced">
-                                <a href="invoice.html" class="btn btn-inline">proced to checkout</a>
+                                  <button onclick="buy(event)" type="button" class="btn btn-inline">Proceed to checkout</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
         <!--=====================================
                     CHECKOUT PART END
         =======================================-->
 
 
-        <!--=====================================
-                    MODAL ADD FORM START
-        =======================================-->
-        <!-- contact add form -->
-        <div class="modal fade" id="contact-add">
-            <div class="modal-dialog modal-dialog-centered"> 
-                <div class="modal-content">
-                    <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
-                    <form class="modal-form">
-                        <div class="form-title">
-                            <h3>add new contact</h3>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">title</label>
-                            <select class="form-select">
-                                <option selected>choose title</option>
-                                <option value="primary">primary</option>
-                                <option value="secondary">secondary</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">number</label>
-                            <input class="form-control" type="text" placeholder="Enter your number">
-                        </div>
-                        <button class="form-btn" type="submit">save contact info</button>
-                    </form>
-                </div> 
-            </div> 
-        </div>
-
-        <!-- address add form -->
-        <div class="modal fade" id="address-add">
-            <div class="modal-dialog modal-dialog-centered"> 
-                <div class="modal-content">
-                    <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
-                    <form class="modal-form">
-                        <div class="form-title">
-                            <h3>add new address</h3>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">title</label>
-                            <select class="form-select">
-                                <option selected>choose title</option>
-                                <option value="home">home</option>
-                                <option value="office">office</option>
-                                <option value="Bussiness">Bussiness</option>
-                                <option value="academy">academy</option>
-                                <option value="others">others</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">address</label>
-                            <textarea class="form-control" placeholder="Enter your address"></textarea>
-                        </div>
-                        <button class="form-btn" type="submit">save address info</button>
-                    </form>
-                </div> 
-            </div> 
-        </div>
-
-        <!-- payment add form -->
-        <div class="modal fade" id="payment-add">
-            <div class="modal-dialog modal-dialog-centered"> 
-                <div class="modal-content">
-                    <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
-                    <form class="modal-form">
-                        <div class="form-title">
-                            <h3>add new payment</h3>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">card number</label>
-                            <input class="form-control" type="text" placeholder="Enter your card number">
-                        </div>
-                        <button class="form-btn" type="submit">save card info</button>
-                    </form>
-                </div> 
-            </div> 
-        </div>
-        <!--=====================================
-                    MODAL ADD FORM END
-        =======================================-->
-
         
-        <!--=====================================
-                    MODAL EDIT FORM START
-        =======================================-->
-        <!-- contact edit form -->
-        <div class="modal fade" id="contact-edit">
-            <div class="modal-dialog modal-dialog-centered"> 
-                <div class="modal-content">
-                    <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
-                    <form class="modal-form">
-                        <div class="form-title">
-                            <h3>edit contact info</h3>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">title</label>
-                            <select class="form-select">
-                                <option value="primary" selected>primary</option>
-                                <option value="secondary">secondary</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">number</label>
-                            <input class="form-control" type="text" value="+8801838288389">
-                        </div>
-                        <button class="form-btn" type="submit">save contact info</button>
-                    </form>
-                </div> 
-            </div> 
-        </div>
-
-        <!-- address edit form -->
-        <div class="modal fade" id="address-edit">
-            <div class="modal-dialog modal-dialog-centered"> 
-                <div class="modal-content">
-                    <button class="modal-close" data-bs-dismiss="modal"><i class="icofont-close"></i></button>
-                    <form class="modal-form">
-                        <div class="form-title">
-                            <h3>edit address info</h3>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">title</label>
-                            <select class="form-select">
-                                <option value="home" selected>home</option>
-                                <option value="office">office</option>
-                                <option value="Bussiness">Bussiness</option>
-                                <option value="academy">academy</option>
-                                <option value="others">others</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">address</label>
-                            <textarea class="form-control" placeholder="jalkuri, fatullah, narayanganj-1420. word no-09, road no-17/A"></textarea>
-                        </div>
-                        <button class="form-btn" type="submit">save address info</button>
-                    </form>
-                </div> 
-            </div> 
-        </div>
-
-
-        
-        <!-- Ajax code  -->
+        <!-- Ajax cdn code  -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         
+        <!-- strip cdn code  -->
+        <script src="https://js.stripe.com/v3/"></script>
+
         <script>
+
+            // function for payment
+            function buy(event) {
+                event.preventDefault();
+
+                var stripe = Stripe('{{pub_key}}');
+
+                fetch('/orders/checkout/payment', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Content-Type': 'application/json'
+                    }
+                }).then(function(response) {
+                    return response.json();
+                }).then(function(session) {
+                    return stripe.redirectToCheckout({ sessionId: session.session.id });
+                });
+            }
+
+
+            // Ajax code 
            $(document).ready(function(e){
                $(document).on('submit','#apply-coupon',function(e){
                 e.preventDefault();  //stop refresh

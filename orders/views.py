@@ -7,12 +7,19 @@ from product.models import Product
 from settings.models import DeliveryFee
 from django.shortcuts import get_object_or_404
 import datetime
-
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-# Create your views here.
+from utils.generate_code import generate_code
+from django.conf import settings
+import stripe
 
 
+
+
+
+
+
+# _________________________________________________________________________________
 
 class OrderList(LoginRequiredMixin,ListView):
     model = Order
@@ -24,6 +31,7 @@ class OrderList(LoginRequiredMixin,ListView):
     
 
     
+# _________________________________________________________________________________
 
 
 
@@ -40,6 +48,7 @@ def add_to_cart(request):
     cart_detail.save()
     return redirect(f'/products/product/{product.slug}')
 
+# _________________________________________________________________________________
 
 
 def remove_from_cart(request, id):
@@ -47,6 +56,7 @@ def remove_from_cart(request, id):
     cart_detail.delete()
     return redirect('/products/')
 
+# _________________________________________________________________________________
 
 
  
@@ -56,6 +66,9 @@ def checkout(request):
     cart = Cart.objects.get(user=request.user, status='InProgress')
     cart_detail = CartDetail.objects.filter(cart=cart)
     delivery_fee = DeliveryFee.objects.last().fee
+    pub_key = settings.STRIPE_API_KEY_PUBLISHABLE
+
+
     if request.method == 'POST':
         coupon = get_object_or_404(Coupon, code=request.POST['coupon_code']) #  return 404
         # coupon = Coupon.objects.get(code=request.data['coupon_code']) # return Error
@@ -94,6 +107,7 @@ def checkout(request):
                                         'cart_total': total,
                                         'delivery_fee': total,
                                         'coupon_value':coupon_value,
+                                        'pub_key': pub_key,
 
                                         })
                 return JsonResponse({'result':html})
@@ -105,7 +119,63 @@ def checkout(request):
                     'cart_total': cart.cart_total() + delivery_fee,
                     'delivery_fee': delivery_fee,
                     'coupon_value':0,
+                    'pub_key': pub_key
                    })    
 
             
    
+
+# _________________________________________________________________________________
+
+
+def process_payment(request):
+    cart = Cart.objects.get(user=request.user, status='InProgress')
+    cart_detail = CartDetail.objects.filter(cart=cart)
+    delivery_fee = DeliveryFee.objects.last().fee
+
+    if cart.total_after_coupon:
+        total = cart.total_after_coupon + delivery_fee
+
+    else:
+        total = cart.cart_total() + delivery_fee
+
+    code = generate_code()
+    
+    stripe.api_key = settings.STRIPE_API_KEY_SECRET
+
+    items = [{
+        'price_data': {
+            'currency': 'usd',
+            'product_data': {
+            'name': code ,
+            },
+            'unit_amount': int(total*100),
+            },
+        'quantity': 1,
+    }]
+
+
+    checkout_session = stripe.checkout.Session.create(  
+            line_items=items,
+            mode='payment',
+            success_url="http://127.0.0.1:8000/orders/checkout/payment/success",
+            cancel_url="http://127.0.0.1:8000/orders/checkout/payment/failed",
+        )
+    return JsonResponse({'session':checkout_session})
+
+
+
+
+
+# _________________________________________________________________________________
+
+def payment_success(request):
+    return render(request, 'orders/success.html', {})
+# _________________________________________________________________________________
+
+def payment_failed(request):
+    return render(request, 'orders/failed.html', {})
+
+
+
+# _________________________________________________________________________________
