@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required 
 from django.contrib.auth.mixins import LoginRequiredMixin 
-from .models import Order, Cart, CartDetail, Coupon
+from .models import Order, OrderDetail, Cart, CartDetail, Coupon
 from product.models import Product
 from settings.models import DeliveryFee
 from django.shortcuts import get_object_or_404
@@ -170,6 +170,31 @@ def process_payment(request):
 # _________________________________________________________________________________
 
 def payment_success(request):
+    cart = Cart.objects.get(user=request.user, status='InProgress')
+    cart_detail = CartDetail.objects.filter(cart=cart)
+
+    new_order = Order.objects.create(
+        user = request.user,
+        coupon = cart.coupon,
+        total_after_coupon = cart.total_after_coupon
+    )
+
+      # cart_detail --> order_detail --> loop
+    for object in cart_detail:
+            OrderDetail.objects.create(
+                order = new_order,
+                product = object.product,
+                quantity = object.quantity,
+                price = object.product.price,
+                total = round(int(object.quantity) * object.product.price,2)
+
+            )
+    cart.status = 'Completed'  
+    cart.save()
+
+    # send email
+
+
     return render(request, 'orders/success.html', {})
 # _________________________________________________________________________________
 

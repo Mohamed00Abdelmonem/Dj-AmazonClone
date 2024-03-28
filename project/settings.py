@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+from dotenv import load_dotenv
 from pathlib import Path
+import os
+
+load_dotenv()  # take environment variables from .env.
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fg(+bu4ctmqy6n5heqjmaqg$lpqewk+6o+v+@vv7s=2jxa1gk&'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -292,7 +296,7 @@ LOGOUT_REDIRECT_URL = '/'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'mmohamedabdelm@gmail.com'  # Replace with your Gmail email address
-EMAIL_HOST_PASSWORD = 'gttk wiij ttju ioyk'  # Replace with your Gmail app password
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
@@ -305,5 +309,5 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 
 # Payment setting
 
-STRIPE_API_KEY_PUBLISHABLE = 'pk_test_51OowOKINOGtmB6n1aR6RRvgNJNF7DCHS8AZl9edPPjAbezKlDjJeL4dsXLLLqrnLQT0kuaxmKd5EOPEyrtJeBI0O00E06hD4T9' 
-STRIPE_API_KEY_SECRET = 'sk_test_51OowOKINOGtmB6n1T7KtwI7pXSGqSUaqGwppbDvd5ArIOPdo0FpJQ1hrEBT1s4v4saIerUOVixgHvkFxNtIth2vN00r4UuN5n9'
+STRIPE_API_KEY_PUBLISHABLE = os.getenv('STRIPE_API_KEY_PUBLISHABLE')
+STRIPE_API_KEY_SECRET = os.getenv('STRIPE_API_KEY_SECRET')
