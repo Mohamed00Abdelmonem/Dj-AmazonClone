@@ -102,3 +102,10 @@ class Review(models.Model):
 
 
 # __________________________________________________________________________________
+
+
+
+class Add_To_Favourite(models.Model):
+    product = models.ForeignKey(Product, related_name='favourite_proudct', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_product_favourite')
+    created_at = models.DateTimeField(default = timezone.now)

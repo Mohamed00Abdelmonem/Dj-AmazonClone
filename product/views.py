@@ -112,3 +112,12 @@ def add_review(request, slug):
     return JsonResponse({'result':html})
 
     # return redirect(f'/products/product/{product.slug}')
+
+
+
+# __________________________________________________________________________________
+
+
+def add_to_favourite(request):
+
+    return render(request, 'product/favourites.html')

@@ -1,0 +1,243 @@
+ {% extends "base.html" %}
+
+        {% load static %}
+
+        {% block css %} 
+            <link rel="stylesheet" href="{% static 'en/css/wishlist.css' %}">
+        {% endblock css %}
+
+
+    {% block body %}
+    
+
+
+        <!--=====================================
+                    WISHLIST PART START
+        =======================================-->
+        <section class="inner-section wishlist-part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="table-scroll">
+                            <table class="table-list">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Serial</th>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">description</th>
+                                        <th scope="col">status</th>
+                                        <th scope="col">shopping</th>
+                                        <th scope="col">action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="table-serial"><h6>01</h6></td>
+                                        <td class="table-image"><img src="images/product/01.jpg" alt="product"></td>
+                                        <td class="table-name"><h6>product name</h6></td>
+                                        <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
+                                        <td class="table-desc"><p>Lorem ipsum nobis eaque excepturi nisi eveniet...<a href="product-video.html">read more</a></p></td>
+                                        <td class="table-status"><h6 class="stock-out">stock out</h6></td>
+                                        <td class="table-shop">
+                                            <button class="product-add" title="Add to Cart">add to cart</button>
+                                            <div class="product-action">
+                                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
+                                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                                            </div>
+                                        </td>
+                                        <td class="table-action">
+                                            <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
+                                            <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-serial"><h6>02</h6></td>
+                                        <td class="table-image"><img src="images/product/02.jpg" alt="product"></td>
+                                        <td class="table-name"><h6>product name</h6></td>
+                                        <td class="table-price"><h6>$78<small>/kilo</small></h6></td>
+                                        <td class="table-desc"><p>Lorem ipsum nobis eaque excepturi nisi eveniet...<a href="product-video.html">read more</a></p></td>
+                                        <td class="table-status"><h6 class="stock-in">stock in</h6></td>
+                                        <td class="table-shop">
+                                            <button class="product-add" title="Add to Cart">add to cart</button>
+                                            <div class="product-action">
+                                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
+                                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                                            </div>
+                                        </td>
+                                        <td class="table-action">
+                                            <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
+                                            <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-serial"><h6>03</h6></td>
+                                        <td class="table-image"><img src="images/product/03.jpg" alt="product"></td>
+                                        <td class="table-name"><h6>product name</h6></td>
+                                        <td class="table-price"><h6>$68<small>/kilo</small></h6></td>
+                                        <td class="table-desc"><p>Lorem ipsum nobis eaque excepturi nisi eveniet...<a href="product-video.html">read more</a></p></td>
+                                        <td class="table-status"><h6 class="stock-out">stock out</h6></td>
+                                        <td class="table-shop">
+                                            <button class="product-add" title="Add to Cart">add to cart</button>
+                                            <div class="product-action">
+                                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
+                                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                                            </div>
+                                        </td>
+                                        <td class="table-action">
+                                            <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
+                                            <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-serial"><h6>04</h6></td>
+                                        <td class="table-image"><img src="images/product/04.jpg" alt="product"></td>
+                                        <td class="table-name"><h6>product name</h6></td>
+                                        <td class="table-price"><h6>$24<small>/kilo</small></h6></td>
+                                        <td class="table-desc"><p>Lorem ipsum nobis eaque excepturi nisi eveniet...<a href="product-video.html">read more</a></p></td>
+                                        <td class="table-status"><h6 class="stock-in">stock in</h6></td>
+                                        <td class="table-shop">
+                                            <button class="product-add" title="Add to Cart">add to cart</button>
+                                            <div class="product-action">
+                                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
+                                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                                            </div>
+                                        </td>
+                                        <td class="table-action">
+                                            <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
+                                            <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="table-serial"><h6>05</h6></td>
+                                        <td class="table-image"><img src="images/product/05.jpg" alt="product"></td>
+                                        <td class="table-name"><h6>product name</h6></td>
+                                        <td class="table-price"><h6>$34<small>/kilo</small></h6></td>
+                                        <td class="table-desc"><p>Lorem ipsum nobis eaque excepturi nisi eveniet...<a href="product-video.html">read more</a></p></td>
+                                        <td class="table-status"><h6 class="stock-out">stock out</h6></td>
+                                        <td class="table-shop">
+                                            <button class="product-add" title="Add to Cart">add to cart</button>
+                                            <div class="product-action">
+                                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
+                                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
+                                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
+                                            </div>
+                                        </td>
+                                        <td class="table-action">
+                                            <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
+                                            <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-center mt-5">
+                            <button class="btn btn-outline">
+                                Load more items
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--=====================================
+                    WISHLIST PART END
+        =======================================-->
+
+
+        <!--=====================================
+                    NEWSLETTER PART START
+        =======================================-->
+        <section class="news-part" style="background: url(images/newsletter.jpg) no-repeat center;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-5 col-lg-6 col-xl-7">
+                        <div class="news-text">
+                            <h2>Get 20% Discount for Subscriber</h2>
+                            <p>Lorem ipsum dolor consectetur adipisicing accusantium</p>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-lg-6 col-xl-5">
+                        <form class="news-form">
+                            <input type="text" placeholder="Enter Your Email Address">
+                            <button><span><i class="icofont-ui-email"></i>Subscribe</span></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--=====================================
+                    NEWSLETTER PART END
+        =======================================-->
+
+
+        <!--=====================================
+                    INTRO PART START
+        =======================================-->
+        <section class="intro-part">
+            <div class="container">
+                <div class="row intro-content">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="intro-wrap">
+                            <div class="intro-icon">
+                                <i class="fas fa-truck"></i>
+                            </div>
+                            <div class="intro-content">
+                                <h5>free home delivery</h5>
+                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="intro-wrap">
+                            <div class="intro-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <div class="intro-content">
+                                <h5>instant return policy</h5>
+                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="intro-wrap">
+                            <div class="intro-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="intro-content">
+                                <h5>quick support system</h5>
+                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="intro-wrap">
+                            <div class="intro-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="intro-content">
+                                <h5>secure payment way</h5>
+                                <p>Lorem ipsum dolor sit amet adipisicing elit nobis.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--=====================================
+                    INTRO PART END
+        =======================================-->
+
+
+
+
+{% endblock body%}
