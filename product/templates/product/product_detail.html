@@ -105,11 +105,16 @@
                             </form>
                             </div>
                             <div class="details-action-group">
-                                <a class="details-wish wish" href="#" title="Add Your Wishlist">
+                            <form action="{% url 'product:add_to_favourite' %}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{object.id}}">
+                                <button type="submit" class="details-wish wish" href="#" title="Add Your Wishlist">
                                     <i class="icofont-heart"></i>
                                     <span>add to wish</span>
-                                </a>
+                                </button>
+                            </form>
                             </div>
+
                         </div>
                     </div>
                 </div>

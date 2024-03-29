@@ -9,6 +9,20 @@
 
     {% block body %}
     
+ <!--=====================================
+                    BANNER PART START
+        =======================================-->
+        <section class="single-banner inner-section" style="background: url(images/single-banner.jpg) no-repeat center;">
+            <div class="container">
+                <h2>product favourite</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                </ol>
+            </div>
+        </section>
+        <!--=====================================
+                    BANNER PART END
+        =======================================-->
 
 
         <!--=====================================
@@ -33,12 +47,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {% for product in products %}
+                                
+                             
                                     <tr>
-                                        <td class="table-serial"><h6>01</h6></td>
-                                        <td class="table-image"><img src="images/product/01.jpg" alt="product"></td>
-                                        <td class="table-name"><h6>product name</h6></td>
-                                        <td class="table-price"><h6>$19<small>/kilo</small></h6></td>
-                                        <td class="table-desc"><p>Lorem ipsum nobis eaque excepturi nisi eveniet...<a href="product-video.html">read more</a></p></td>
+                                        <td class="table-serial"><h6>{{forloop.counter}}</h6></td>
+                                        <td class="table-image"><img src="{{product.product.image.url}}" alt="product"></td>
+                                        <td class="table-name"><h6>{{product.product}}</h6></td>
+                                        <td class="table-price"><h6>${{product.product.price}}<small>/kilo</small></h6></td>
+                                        <td class="table-desc"><p>{{product.product.subtitle|slice:":40"}}..<a href="product-video.html">...</a></p></td>
                                         <td class="table-status"><h6 class="stock-out">stock out</h6></td>
                                         <td class="table-shop">
                                             <button class="product-add" title="Add to Cart">add to cart</button>
@@ -53,86 +70,7 @@
                                             <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td class="table-serial"><h6>02</h6></td>
-                                        <td class="table-image"><img src="images/product/02.jpg" alt="product"></td>
-                                        <td class="table-name"><h6>product name</h6></td>
-                                        <td class="table-price"><h6>$78<small>/kilo</small></h6></td>
-                                        <td class="table-desc"><p>Lorem ipsum nobis eaque excepturi nisi eveniet...<a href="product-video.html">read more</a></p></td>
-                                        <td class="table-status"><h6 class="stock-in">stock in</h6></td>
-                                        <td class="table-shop">
-                                            <button class="product-add" title="Add to Cart">add to cart</button>
-                                            <div class="product-action">
-                                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                            </div>
-                                        </td>
-                                        <td class="table-action">
-                                            <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
-                                            <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table-serial"><h6>03</h6></td>
-                                        <td class="table-image"><img src="images/product/03.jpg" alt="product"></td>
-                                        <td class="table-name"><h6>product name</h6></td>
-                                        <td class="table-price"><h6>$68<small>/kilo</small></h6></td>
-                                        <td class="table-desc"><p>Lorem ipsum nobis eaque excepturi nisi eveniet...<a href="product-video.html">read more</a></p></td>
-                                        <td class="table-status"><h6 class="stock-out">stock out</h6></td>
-                                        <td class="table-shop">
-                                            <button class="product-add" title="Add to Cart">add to cart</button>
-                                            <div class="product-action">
-                                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                            </div>
-                                        </td>
-                                        <td class="table-action">
-                                            <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
-                                            <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table-serial"><h6>04</h6></td>
-                                        <td class="table-image"><img src="images/product/04.jpg" alt="product"></td>
-                                        <td class="table-name"><h6>product name</h6></td>
-                                        <td class="table-price"><h6>$24<small>/kilo</small></h6></td>
-                                        <td class="table-desc"><p>Lorem ipsum nobis eaque excepturi nisi eveniet...<a href="product-video.html">read more</a></p></td>
-                                        <td class="table-status"><h6 class="stock-in">stock in</h6></td>
-                                        <td class="table-shop">
-                                            <button class="product-add" title="Add to Cart">add to cart</button>
-                                            <div class="product-action">
-                                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                            </div>
-                                        </td>
-                                        <td class="table-action">
-                                            <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
-                                            <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="table-serial"><h6>05</h6></td>
-                                        <td class="table-image"><img src="images/product/05.jpg" alt="product"></td>
-                                        <td class="table-name"><h6>product name</h6></td>
-                                        <td class="table-price"><h6>$34<small>/kilo</small></h6></td>
-                                        <td class="table-desc"><p>Lorem ipsum nobis eaque excepturi nisi eveniet...<a href="product-video.html">read more</a></p></td>
-                                        <td class="table-status"><h6 class="stock-out">stock out</h6></td>
-                                        <td class="table-shop">
-                                            <button class="product-add" title="Add to Cart">add to cart</button>
-                                            <div class="product-action">
-                                                <button class="action-minus" title="Quantity Minus"><i class="icofont-minus"></i></button>
-                                                <input class="action-input" title="Quantity Number" type="text" name="quantity" value="1">
-                                                <button class="action-plus" title="Quantity Plus"><i class="icofont-plus"></i></button>
-                                            </div>
-                                        </td>
-                                        <td class="table-action">
-                                            <a class="view" href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#product-view"><i class="fas fa-eye"></i></a>
-                                            <a class="trash" href="#" title="Remove Wishlist"><i class="icofont-trash"></i></a>
-                                        </td>
-                                    </tr>
+                                {% endfor %}
                                 </tbody>
                             </table>
                         </div>

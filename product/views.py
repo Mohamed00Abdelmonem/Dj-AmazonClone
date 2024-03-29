@@ -2,7 +2,7 @@ from typing import Any, Dict
 from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
-from .models import Product, Brand, Review
+from .models import Product, Brand, Review, Add_To_Favourite
 from django.db.models.aggregates import Count
 from accounts.models import Profile
 from django.views.decorators.cache import cache_page
@@ -119,5 +119,16 @@ def add_review(request, slug):
 
 
 def add_to_favourite(request):
+    product = Product.objects.get(id=request.POST['product_id'])
+    user = request.user
+    favourite_proudct, created = Add_To_Favourite.objects.get_or_create(user=user, product=product) 
+    favourite_proudct.save()
+    return redirect(f'/products/product/{product.slug}')
 
-    return render(request, 'product/favourites.html')
+
+# __________________________________________________________________________________
+
+def show_favourites(request):
+    products = Add_To_Favourite.objects.filter(user=request.user)
+    
+    return render(request, 'product/favourites.html', {'products':products})
