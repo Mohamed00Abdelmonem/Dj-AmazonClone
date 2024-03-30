@@ -129,6 +129,7 @@ TEMPLATES = [
                 'settings.company_context_processor.get_company_data',
                 'settings.company_context_processor.get_user_data',
                 'orders.cart_context_processor.get_or_create_cart',
+                'product.context_process_Favourite_proudct.get_add_to_favourite',
             ],
         },
     },
