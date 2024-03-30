@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ProductList, ProductDetail, BrandList, BrandDetail, debug, add_review, add_to_favourite, show_favourites
+from .views import ProductList, ProductDetail, BrandList, BrandDetail, debug, add_review, add_to_favourite, show_favourites, remove_product_form_favourite
 from .api import  ProductListApi, ProductDetailApi, BrandListApi, BrandDetailApi
 
 app_name = 'product'
@@ -13,6 +13,7 @@ urlpatterns = [
     path('<slug:slug>/add-review', add_review, name='add_review'),
     path('add_to_favourite', add_to_favourite, name='add_to_favourite'),
     path('favourites', show_favourites, name='show_favourites'),
+    path('remove_from_favourite/<int:product_id>', remove_product_form_favourite, name='remove_product_form_favourite'),
 
     # api urls
     path('api/list/', ProductListApi.as_view()),

@@ -113,6 +113,18 @@
                                     <span>add to wish</span>
                                 </button>
                             </form>
+                                {% if messages %}
+                                    <ul class="messages" style="background-color: #4CAF50; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                                        {% for message in messages %}
+                                            <li class="{{ message.tags }}" style="margin-bottom: 5px; padding: 5px; color: #fff; border-radius: 3px;">
+                                                {{ message }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+
+
+
                             </div>
 
                         </div>

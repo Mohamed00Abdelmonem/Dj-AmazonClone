@@ -8,6 +8,8 @@ from accounts.models import Profile
 from django.views.decorators.cache import cache_page
 from django.utils.decorators import method_decorator
 from .tasks import send_emails
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from django.http import JsonResponse
 from django.template.loader import render_to_string
@@ -117,18 +119,31 @@ def add_review(request, slug):
 
 # __________________________________________________________________________________
 
-
+@login_required
 def add_to_favourite(request):
     product = Product.objects.get(id=request.POST['product_id'])
     user = request.user
     favourite_proudct, created = Add_To_Favourite.objects.get_or_create(user=user, product=product) 
     favourite_proudct.save()
+    messages.success(request, 'Product Add from favorites successfully.')
+
     return redirect(f'/products/product/{product.slug}')
 
 
 # __________________________________________________________________________________
 
+@login_required
 def show_favourites(request):
     products = Add_To_Favourite.objects.filter(user=request.user)
-    
+   
     return render(request, 'product/favourites.html', {'products':products})
+
+
+# __________________________________________________________________________________
+
+@login_required
+def remove_product_form_favourite(request, product_id):
+    product = Add_To_Favourite.objects.get(id=product_id)
+    product.delete()
+    return redirect(f'/products/favourites')
+
