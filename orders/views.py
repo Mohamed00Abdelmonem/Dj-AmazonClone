@@ -159,7 +159,7 @@ def process_payment(request):
             line_items=items,
             mode='payment',
             success_url="https://dj-amazonclone.onrender.com/orders/checkout/payment/success",
-            cancel_url="https://dj-amazonclone.onrender.com/orders/checkout/payment/failed",
+            cancel_url="http://127.0.0.1:8000/orders/checkout/payment/failed",
         )
     return JsonResponse({'session':checkout_session})
 
