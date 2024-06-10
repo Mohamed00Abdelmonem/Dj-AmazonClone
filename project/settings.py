@@ -272,12 +272,13 @@ LANGUAGES = [
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://myredis:6379/1',  # Update to match the Celery configuration
+        'LOCATION': 'redis://dj-amazonclone.onrender.com:6379/1',  # Corrected the domain
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     }
 }
+
 
 
 
@@ -290,9 +291,12 @@ CACHES = {
 # CELERY_BROKER_URL = 'redis://localhost:6379/0'
 # CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
 
-CELERY_BROKER_URL = 'redis://myredis:6379/0'
-CELERY_RESULT_BACKEND = 'redis://myredis:6379/0'
+# CELERY_BROKER_URL = 'redis://myredis:6379/0'
+# CELERY_RESULT_BACKEND = 'redis://myredis:6379/0'
 
+# Celery configuration
+CELERY_BROKER_URL = 'redis://dj-amazonclone.onrender.com:6379/0'
+CELERY_RESULT_BACKEND = 'redis://dj-amazonclone.onrender.com:6379/0'
 
 
 # CELERY_BROKER_URL = 'redis://myredis:6379/0'
