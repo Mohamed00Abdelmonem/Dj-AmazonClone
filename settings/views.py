@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
-@cache_page(60 * 10) # 3 minutes
+# @cache_page(60 * 10) # 3 minutes
 # @login_required                                                                                                                                                                           
 def home(request):
        brands = Brand.objects.all().annotate(brand_count=Count('product_brand'))
