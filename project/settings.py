@@ -224,6 +224,7 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ BASE_DIR / "static" ]
+
 STATIC_ROOT = "static_root"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = "media_root"
@@ -271,12 +272,13 @@ LANGUAGES = [
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://127.0.0.1:6379/1',  # Adjust the URL as needed
+        'LOCATION': 'redis://myredis:6379/1',  # Update to match the Celery configuration
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis.client.DefaultClient',
         }
     }
 }
+
 
 
         
