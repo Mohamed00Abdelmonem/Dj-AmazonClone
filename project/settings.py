@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from dotenv import load_dotenv
 from pathlib import Path
 import os
+import dj_database_url
+
+
 
 load_dotenv()  # take environment variables from .env.
 
@@ -29,8 +32,12 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [ 'dj-amazonclone90.up.railway.app' ]
-CSRF_TRUSTED_ORIGINS = ['https://dj-amazonclone90.up.railway.app']
+ALLOWED_HOSTS = ['*']
+
+#         for deploy using railway
+# ALLOWED_HOSTS = [ 'dj-admazonclone90.up.railway.app' ]
+# CSRF_TRUSTED_ORIGINS = ['https://dj-amazonclone90.up.railway.app']
+
 
 
 # Application definition
@@ -90,7 +97,6 @@ REST_FRAMEWORK = {
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -155,16 +161,28 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # }
 
     
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "New_Amazon_Clone",
+#         "USER": "postgres",
+#         "PASSWORD": "01026120743",
+#         "HOST": "127.0.0.1",
+#         "PORT": "5432",
+#     }
+# }
+
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "New_Amazon_Clone",
-        "USER": "postgres",
-        "PASSWORD": "01026120743",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
-    }
+    'default': dj_database_url.parse('postgres://amazon_clone_wjyf_user:XDyJbhVrQp5X5Go6v86PeM4tbfZpaGLc@dpg-cpj82lect0pc73857s30-a.oregon-postgres.render.com/amazon_clone_wjyf',conn_max_age=600)
 }
+
+
+
+
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 
 

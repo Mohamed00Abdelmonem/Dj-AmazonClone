@@ -16,6 +16,7 @@ click-repl==0.3.0
 colorama==0.4.6
 cryptography==41.0.4
 defusedxml==0.7.1
+dj-database-url==2.2.0
 dj-rest-auth==5.0.1
 Django==4.2.4
 django-allauth==0.56.1
