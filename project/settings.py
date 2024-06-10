@@ -174,7 +174,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.parse('postgres://amazon_clone_ovj2_user:uhbcNzZM6IgrCnVQzlfCICL57M4MFF4a@dpg-cpj9m4ect0pc7385ub7g-a.oregon-postgres.render.com/amazon_clone_ovj2',conn_max_age=600)
+    'default': dj_database_url.parse('postgres://amazon_zgmd_user:CzpMOduzWstCAKgKLeX7n9WSL7mYCLIr@dpg-cpjat3q1hbls73bssl80-a.oregon-postgres.render.com/amazon_zgmd',conn_max_age=600)
 }
 
 
