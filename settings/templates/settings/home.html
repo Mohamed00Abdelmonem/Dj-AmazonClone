@@ -461,12 +461,12 @@
                                         <li class="fas fa-{% if review.rate > 4 %}star{% else %}-empty {% endif%}"></li>
                                         <li class="fas fa-{% if review.rate > 5 %}star{% else %}-empty {% endif%}"></li>
                                     </ul>
-                                    {% if review.user.profile.image.url %}
+                                    {% comment %} {% if review.user.profile.image.url %}
                                         <img src="{{ review.user.profile.image.url }}" alt="testimonial">
-                                    {% else %}
+                                    {% else %} {% endcomment %}
                                         <!-- Use a default image path if the user profile image is not available -->
                                         <img src="{% static 'en/images/avatar/01.png' %}" alt="not photo">
-                                    {% endif %}
+                                    {% comment %} {% endif %} {% endcomment %}
                                 </div>
                             {% endfor %}
 
