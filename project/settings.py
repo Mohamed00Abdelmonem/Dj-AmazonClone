@@ -324,7 +324,7 @@ LOGOUT_REDIRECT_URL = '/'
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'mmohamedabdelm@gmail.com'  # Replace with your Gmail email address
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # Replace with your Gmail email address
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
@@ -344,7 +344,3 @@ MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
 STRIPE_API_KEY_PUBLISHABLE = os.getenv('STRIPE_API_KEY_PUBLISHABLE')
 STRIPE_API_KEY_SECRET = os.getenv('STRIPE_API_KEY_SECRET')
 
-
-# Payment setting
-STRIPE_API_KEY_PUBLISHABLE = 'pk_test_51OowOKINOGtmB6n1aR6RRvgNJNF7DCHS8AZl9edPPjAbezKlDjJeL4dsXLLLqrnLQT0kuaxmKd5EOPEyrtJeBI0O00E06hD4T9' 
-STRIPE_API_KEY_SECRET = 'sk_test_51OowOKINOGtmB6n1T7KtwI7pXSGqSUaqGwppbDvd5ArIOPdo0FpJQ1hrEBT1s4v4saIerUOVixgHvkFxNtIth2vN00r4UuN5n9'
