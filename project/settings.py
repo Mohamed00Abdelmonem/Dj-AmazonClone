@@ -164,11 +164,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "New_Amazon_Clone",
-        "USER": "postgres",
-        "PASSWORD": "01026120743",
+        "NAME": os.getenv("DB_NAME"),
+        "USER": os.getenv("DB_USER"),
+        "PASSWORD": os.getenv("DB_PASSWORD"),
         "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "PORT": os.getenv("DB_PORT"),
     }
 }
 
@@ -330,7 +330,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 
-EMAIL_HOST_PASSWORD = 'qebu bunf dlhp petv'
 
 
 MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
