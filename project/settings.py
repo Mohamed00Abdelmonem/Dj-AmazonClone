@@ -162,14 +162,13 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 
 
-
-import dj_database_url
 import os
+import dj_database_url
 
-# Configure the database using environment variables or a default URL
 DATABASES = {
-    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL', 'postgres://USER:PASSWORD@HOST:PORT/DB_NAME'))
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
+
 
 
 # DATABASES = {
