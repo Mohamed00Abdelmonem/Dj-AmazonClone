@@ -161,6 +161,23 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # }
 
 
+# import environ
+
+# # Initialise environment variables
+# env = environ.Env()
+# environ.Env.read_env()  # This will read the .env file
+
+# DATABASES = {
+#     'default': env.db('DATABASE_URL')
+# }
+
+
+# from decouple import config
+
+# DATABASES = {
+#     'default': dj_database_url.config(default=config('DATABASE_URL'))
+# }
+
 
 import os
 import dj_database_url
