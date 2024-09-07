@@ -160,7 +160,6 @@ WSGI_APPLICATION = 'project.wsgi.application'
 #     }
 # }
 
-import environ
 
 
 import os
@@ -168,18 +167,6 @@ import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
-}
-
-
-
-
-
-# Initialise environment variables
-env = environ.Env()
-environ.Env.read_env()  # This will read the .env file
-
-DATABASES = {
-    'default': env.db('DATABASE_URL')
 }
 
 
