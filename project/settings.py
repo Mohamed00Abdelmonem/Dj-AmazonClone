@@ -160,17 +160,29 @@ WSGI_APPLICATION = 'project.wsgi.application'
 #     }
 # }
 
-    
+
+
+
+import dj_database_url
+import os
+
+# Configure the database using environment variables or a default URL
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": "127.0.0.1",
-        "PORT": os.getenv("DB_PORT"),
-    }
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL', 'postgres://USER:PASSWORD@HOST:PORT/DB_NAME'))
 }
+
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": os.getenv("DB_NAME"),
+#         "USER": os.getenv("DB_USER"),
+#         "PASSWORD": os.getenv("DB_PASSWORD"),
+#         "HOST": os.environ.get('DB_HOST'),
+#         "PORT": os.getenv("DB_PORT"),
+#     }
+# }
+
 
 
 # DATABASES = {
