@@ -160,7 +160,7 @@
                     <a href="/" class="header-logo">
                         <img src="{{company_data.logo.url}}" alt="logo">
                     </a>
-                        <a href="{% url 'accounts:profile_user' %}" class="header-widget" title="My Account">
+                        <a href="{% url 'auth:profile_user' %}" class="header-widget" title="My Account">
                             {% if user.is_authenticated  %}
                                 {% if user_data.user.profile and user_data.user.profile.image and user_data.user.profile.image.url %}
                                              <img src="{{user_data.user.profile.image.url}}" alt="{{ user_data.user.name }}">
@@ -539,7 +539,7 @@
                     <li>
                         <a class="nav-link dropdown-link" href="#"><i class="icofont-bag-alt"></i>my account</a>
                         <ul class="dropdown-list">
-                            <li><a href="{% url 'accounts:profile_user' %}">profile</a></li>
+                            <li><a href="{% url 'auth:profile_user' %}">profile</a></li>
                             <li><a href="wallet.html">wallet</a></li>
                             <li><a href="wishlist.html">wishlist</a></li>
                             <li><a href="compare.html">compare</a></li>

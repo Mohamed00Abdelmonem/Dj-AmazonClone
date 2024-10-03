@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-fg(+bu4ctmqy6n5heqjmaqg$lpqewk+6o+v+@vv7s=2jxa1gk&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 #         for deploy using railway
 # ALLOWED_HOSTS = [ 'dj-admazonclone90.up.railway.app' ]
@@ -61,14 +61,23 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'dj_rest_auth',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
     'dj_rest_auth.registration',
     'drf_yasg',
     "django_bootstrap5",
     # 'silk',
     'django_redis',
+
+
+
+    # for soical auth google
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    "django.contrib.sites",
+
+
+
 
 
     'product',
@@ -79,6 +88,29 @@ INSTALLED_APPS = [
 
 
 
+SITE_ID = 2
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+
+# Social account provider settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': ['profile', 'email'],
+        'AUTH_PARAMS': {'access_type': 'online'},
+        'REDIRECT_URI': 'http://127.0.0.1:8000/accounts/google/login/callback/',  # Add this line if needed
+    }
+}
+
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_STORE_TOKENS = True
+
+# Environment Variables (or directly in settings)
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
 
 REST_FRAMEWORK = {
@@ -107,6 +139,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'allauth.account.middleware.AccountMiddleware',
+
     # 'silk.middleware.SilkyMiddleware',
 
 ]
@@ -118,7 +153,7 @@ INTERNAL_IPS = [
     # ...
 ]
 
-SITE_ID = 1
+# SITE_ID = 1
 
 import mimetypes
 mimetypes.add_type("application/javascript", ".js", True) 

@@ -45,8 +45,9 @@ schema_view = get_schema_view(
 
 
 urlpatterns = [
-    path("accounts/", include("django.contrib.auth.urls")),
-    path('accounts/', include('accounts.urls', namespace='accounts')),
+    # path("accounts/", include("django.contrib.auth.urls")), # i'm comment this for test social auth
+    path("accounts/", include('allauth.urls')),
+    path('auth/', include('accounts.urls', namespace='auth')),
     path('admin/', admin.site.urls),
     path('products/', include('product.urls', namespace='product')),
     path('orders/', include('orders.urls', namespace='orders')),
