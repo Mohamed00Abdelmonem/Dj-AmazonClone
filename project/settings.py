@@ -169,6 +169,14 @@ DATABASES = {
     'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
+# POSTGRES_LOCALLY = True
+# if ENVIRONMENT == 'production' or POSTGRES LOCALLY == True:
+# DATABASES['default'] = dj_database_url.parse(env('DATABASE_URL'))
+
+
+
+
+
 
 
 # DATABASES = {
