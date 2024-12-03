@@ -32,7 +32,10 @@ SECRET_KEY = 'django-insecure-fg(+bu4ctmqy6n5heqjmaqg$lpqewk+6o+v+@vv7s=2jxa1gk&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = [
+    'https://rnxkc-197-35-108-228.a.free.pinggy.link',
+]
 
 #         for deploy using railway
 # ALLOWED_HOSTS = [ 'dj-admazonclone90.up.railway.app' ]
