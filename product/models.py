@@ -30,22 +30,30 @@ class Product(models.Model):
     description = models.TextField(_("Description"),max_length=40000)
     quantity = models.IntegerField(_("Quantity"),)
     brand = models.ForeignKey('Brand', verbose_name=_("Brand"), related_name='product_brand', on_delete=models.SET_NULL, null=True)
-    slug = models.SlugField(null=True, blank=True)
+    max_quantity = models.IntegerField(_("Max Quantity"), default=100)  # أضف هذا السطر
+    # slug = models.SlugField(null=True, blank=True)
+    slug = models.SlugField(unique=True)
 
     def __str__(self) -> str:
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super(Product, self).save(*args, **kwargs) 
+        
     def quantity_progress_bar(self):
+        max_quantity = 100
         if self.quantity is not None:
-            percentage = round((self.quantity / self.max_quantity * 100), 2)
+            percentage = round((self.quantity / max_quantity) * 100, 2)
         else:
-            percentage = 0
+            percentage = 0.0
 
         return format_html(
-            '<progress value="{}" max="100"></progress><span style="font-weight:bold">{:.2f}%</span>',
+            '<progress value="{0}" max="100"></progress> <span style="font-weight:bold">{1}%</span>',
             percentage,
-            percentage
+            f"{percentage:.2f}"
         )
+
     
 
     # instance method = each object , self = object
@@ -57,9 +65,6 @@ class Product(models.Model):
         return avg['rate_avg']
 
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(Product, self).save(*args, **kwargs) 
 # __________________________________________________________________________________
 
 class ProductImages(models.Model):

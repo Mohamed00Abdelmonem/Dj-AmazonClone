@@ -15,8 +15,8 @@ class CartDetailCreateAPI(generics.GenericAPIView):
 
     # This End Point For Show Products In Your Cart
     def get(self,request, *args, **kwargs):
-        user = User.objects.get(username=self.kwargs['username'])
-        cart, created = Cart.objects.get_or_create(user=user, status='InProgress')
+        user = User.objects.get(username=self.kwargs['username']) # get this username form url
+        cart, created = Cart.objects.get_or_create(user=user, status='InProgress') 
         data = CartSerializer(cart).data
         return Response({'cart':data})
 
@@ -25,8 +25,8 @@ class CartDetailCreateAPI(generics.GenericAPIView):
     # This End Point For Create Or Edit Product
     def post(self,request, *args, **kwargs):
         user = User.objects.get(username=self.kwargs['username'])
-        product = Product.objects.get(id=request.data['product_id'])
-        quantity = int(request.data['quantity'])
+        product = Product.objects.get(id=request.data['product_id']) # get this product_id form frontend in hiden or hide input in frontend
+        quantity = int(request.data['quantity']) # get this product_id form frontend in hiden or hide input in frontend
         cart = Cart.objects.get(user=user, status='InProgress')
         cart_detail, created = CartDetail.objects.get_or_create(cart=cart, product=product)
         cart_detail.quantity = quantity
@@ -34,7 +34,7 @@ class CartDetailCreateAPI(generics.GenericAPIView):
         cart_detail.save() 
 
         cart = Cart.objects.get(user=user, status='InProgress')
-        data = CartSerializer(cart).data
+        data = CartSerializer(cart).data # for show all data after post or create
 
         return Response({'message':'product added successfully', 'cart':data})
 
