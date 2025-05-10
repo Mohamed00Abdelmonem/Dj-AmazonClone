@@ -30,9 +30,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-fg(+bu4ctmqy6n5heqjmaqg$lpqewk+6o+v+@vv7s=2jxa1gk&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False # For Deploy
+
 
 ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1', 'localhost']
+
 CSRF_TRUSTED_ORIGINS = [
     'https://rnxkc-197-35-108-228.a.free.pinggy.link',
 ]
@@ -232,9 +236,9 @@ DATABASES = {
 
 
 
-# DATABASES = {
-#     'default': dj_database_url.parse('postgres://amazon_zgmd_user:CzpMOduzWstCAKgKLeX7n9WSL7mYCLIr@dpg-cpjat3q1hbls73bssl80-a.oregon-postgres.render.com/amazon_zgmd',conn_max_age=600)
-# }
+DATABASES = {
+    'default': dj_database_url.parse('postgres://amazon_zgmd_user:CzpMOduzWstCAKgKLeX7n9WSL7mYCLIr@dpg-cpjat3q1hbls73bssl80-a.oregon-postgres.render.com/amazon_zgmd',conn_max_age=600)
+}
 
 
 
