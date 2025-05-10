@@ -1,8 +1,10 @@
 __pycache__
-.git
-.github
-node_modules
 *.pyc
 *.pyo
+*.git
 *.gitignore
-.venv
+node_modules
+*.env
+*.log
+*.md
+tests/
