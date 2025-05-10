@@ -1,0 +1,4 @@
+autopep8
+django-debug-toolbar
+django-silk
+gprof2dot
